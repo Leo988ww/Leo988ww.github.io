@@ -1,64 +1,62 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8" />
-<title>Carros Coloridos</title>
-<style>
-  body {
-    font-family: Arial, sans-serif;
-    padding: 20px;
-  }
-  .car {
-    padding: 10px;
-    margin: 5px 0;
-    color: white;
-    border-radius: 5px;
-    width: 250px;
-  }
-  .old {
-    background-color: #d9534f; /* vermelho */
-  }
-  .mid {
-    background-color: #f0ad4e; /* laranja */
-  }
-  .new {
-    background-color: #5cb85c; /* verde */
-  }
-</style>
+  <meta charset="UTF-8">
+  <title>Portfólio do Leonardo</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #333333;
+      color: #f1f1f1;
+      text-align: center;
+      padding: 30px;
+    }
+
+    img {
+      border-radius: 50%;
+      width: 150px;
+      height: 150px;
+    }
+
+    a {
+      color: #00ffff;
+      text-decoration: none;
+      margin: 10px;
+      display: inline-block;
+    }
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    li {
+      margin: 10px 0;
+    }
+
+    h1, h2 {
+      color: #00ffff;
+    }
+  </style>
 </head>
 <body>
 
-<h1>Lista de Carros Coloridos</h1>
-<div id="car-list"></div>
+  <h1>👨‍💻 Leonardo Dev</h1>
+  <img src="https://i.imgur.com/q2aQLwf.jpeg" alt="Minha foto">
 
-<script>
-  const carros = [
-    { marca: 'Ford', modelo: 'Mustang', ano: 1967 },
-    { marca: 'Chevrolet', modelo: 'Camaro', ano: 2010 },
-    { marca: 'Tesla', modelo: 'Model 3', ano: 2021 },
-    { marca: 'Volkswagen', modelo: 'Fusca', ano: 1975 },
-    { marca: 'Toyota', modelo: 'Corolla', ano: 2018 }
-  ];
+  <p>Gosto de tecnologia e TI! Atualmente estudo Gestão da Tecnologia da Informação e estou aprendendo programação.</p>
 
-  const carListDiv = document.getElementById('car-list');
+  <h2>📌 Links</h2>
+  <a href="https://github.com/Leo988ww" target="_blank">GitHub</a>
+  <a href="https://instagram.com/leov.sb" target="_blank">Instagram</a>
+  <a href="https://www.youtube.com/@tvpadrin" target="_blank">Youtube</a>
 
-  carros.forEach(car => {
-    const div = document.createElement('div');
-    div.classList.add('car');
-
-    // Definindo cor pela idade do carro
-    if (car.ano < 1990) {
-      div.classList.add('old');
-    } else if (car.ano < 2015) {
-      div.classList.add('mid');
-    } else {
-      div.classList.add('new');
-    }
-
-    div.textContent = `${car.marca} ${car.modelo} - Ano: ${car.ano}`;
-    carListDiv.appendChild(div);
-  });
-</script>
+  <h2>📁 Projetos</h2>
+  <ul>
+    <li>💡 Projeto 1 – Em breve</li>
+    <li>💡 Projeto 2 – Em construção</li>
+    <!-- Você pode adicionar mais projetos aqui -->
+  </ul>
 
 </body>
 </html>
