@@ -10,62 +10,55 @@
 
     body {
       font-family: 'Roboto', sans-serif;
-      background: linear-gradient(120deg, #00f0ff, #ff00ff, #9400d3, #7fff00);
-      background-size: 400% 400%;
-      animation: gradientBG 20s ease infinite;
       color: #f1f1f1;
       padding: 20px;
       overflow-x: hidden;
+      position: relative;
+      z-index: 1;
+      background-color: #0b0b0b;
     }
 
-    @keyframes gradientBG {
-      0% {background-position: 0% 50%;}
-      50% {background-position: 100% 50%;}
-      100% {background-position: 0% 50%;}
-    }
-
-    .container { max-width: 900px; margin: 0 auto; text-align: center; }
+    .container { max-width: 900px; margin: 0 auto; text-align: center; position: relative; z-index: 2; }
 
     .fade-in { opacity: 0; transform: translateY(30px); animation: fadeIn 1s forwards; }
     .fade-in-delay { animation-delay: 0.5s; }
     .fade-in-delay-2 { animation-delay: 1s; }
     .fade-in-delay-3 { animation-delay: 1.5s; }
-
     @keyframes fadeIn { to { opacity: 1; transform: translateY(0); } }
 
     img.profile {
       border-radius: 50%;
       width: 160px;
       height: 160px;
-      border: 4px solid #fff;
+      border: 4px solid #0ff;
       margin-bottom: 20px;
       transition: transform 0.4s, border-color 0.4s, box-shadow 0.4s;
     }
     img.profile:hover {
       transform: scale(1.1) rotate(3deg);
       border-color: #ff0;
-      box-shadow: 0 0 25px #fff, 0 0 50px #ff0;
+      box-shadow: 0 0 25px #0ff, 0 0 50px #ff0;
     }
 
-    h1 { font-size: 2.8em; color: #fff; margin-bottom: 15px; text-shadow: 0 0 10px #fff; }
+    h1 { font-size: 2.8em; color: #0ff; margin-bottom: 15px; text-shadow: 0 0 10px #0ff; }
     p { margin-bottom: 40px; font-size: 1.2em; line-height: 1.6; max-width: 750px; margin-left: auto; margin-right: auto; }
-    h2 { color: #fff; margin-top: 40px; margin-bottom: 20px; text-shadow: 0 0 10px #fff; }
+    h2 { color: #0ff; margin-top: 40px; margin-bottom: 20px; text-shadow: 0 0 10px #0ff; }
 
     .links a {
-      color: #fff;
+      color: #0ff;
       text-decoration: none;
       margin: 10px;
       font-weight: bold;
       display: inline-flex;
       align-items: center;
       padding: 12px 25px;
-      border: 2px solid #fff;
+      border: 2px solid #0ff;
       border-radius: 10px;
       transition: all 0.4s;
-      box-shadow: 0 0 10px #fff;
+      box-shadow: 0 0 10px #0ff;
     }
     .links a i { margin-right: 10px; font-size: 1.3em; transition: transform 0.3s; }
-    .links a:hover { background-color: #fff; color: #1e1e1e; box-shadow: 0 0 25px #fff, 0 0 50px #ff0; }
+    .links a:hover { background-color: #0ff; color: #0b0b0b; box-shadow: 0 0 25px #0ff, 0 0 50px #ff0; }
     .links a:hover i { transform: rotate(20deg); }
 
     ul {
@@ -83,12 +76,63 @@
       transition: all 0.4s;
       cursor: pointer;
       font-size: 1.15em;
-      box-shadow: 0 0 10px #fff;
+      box-shadow: 0 0 10px #0ff;
       opacity: 0;
       transform: translateY(30px);
     }
     li.visible { opacity: 1; transform: translateY(0); transition: all 0.6s ease; }
-    li:hover { transform: translateY(-8px) scale(1.05); box-shadow: 0 0 20px #fff, 0 0 40px #ff0; }
+    li:hover { transform: translateY(-8px) scale(1.05); box-shadow: 0 0 20px #0ff, 0 0 40px #ff0; }
+
+    /* Fundo Matrix */
+    .matrix {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      color: #0f0;
+      font-family: monospace;
+      font-size: 14px;
+      white-space: nowrap;
+      overflow: hidden;
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.05;
+    }
+
+    /* Linhas neon */
+    .line {
+      position: fixed;
+      width: 2px;
+      height: 100%;
+      background: #0ff;
+      opacity: 0.1;
+      animation: moveLine 5s linear infinite;
+      z-index: 0;
+    }
+    .line:nth-child(1) { left: 20%; animation-duration: 6s; }
+    .line:nth-child(2) { left: 50%; animation-duration: 8s; }
+    .line:nth-child(3) { left: 80%; animation-duration: 10s; }
+
+    @keyframes moveLine { 0% { top: -100%; } 100% { top: 100%; } }
+
+    /* Ícones flutuantes de computador */
+    .computer-bg {
+      position: absolute;
+      font-size: 50px;
+      color: rgba(0, 255, 255, 0.05);
+      animation: float 15s infinite linear;
+      z-index: 0;
+    }
+    .computer-bg:nth-child(1) { top: 10%; left: 15%; animation-duration: 20s; }
+    .computer-bg:nth-child(2) { top: 30%; left: 70%; animation-duration: 25s; }
+    .computer-bg:nth-child(3) { top: 70%; left: 40%; animation-duration: 18s; }
+
+    @keyframes float {
+      0% { transform: translateY(0) rotate(0deg);}
+      50% { transform: translateY(-20px) rotate(20deg);}
+      100% { transform: translateY(0) rotate(0deg);}
+    }
 
     @media (max-width: 650px) {
       h1 { font-size: 2.2em; }
@@ -99,6 +143,19 @@
 </head>
 <body>
 
+  <!-- Fundo Matrix -->
+  <div class="matrix">1010101010011010101010101010101010101010101010101010101010101010</div>
+
+  <!-- Linhas neon -->
+  <div class="line"></div>
+  <div class="line"></div>
+  <div class="line"></div>
+
+  <!-- Ícones flutuantes -->
+  <i class="fas fa-laptop computer-bg"></i>
+  <i class="fas fa-microchip computer-bg"></i>
+  <i class="fas fa-tools computer-bg"></i>
+
   <div class="container fade-in">
     <h1>👨‍💻 Leonardo Barbosa</h1>
     <img src="https://i.imgur.com/q2aQLwf.jpeg" alt="Minha foto" class="profile fade-in fade-in-delay">
@@ -107,13 +164,13 @@
       Trabalho na empresa <strong>Alares</strong> como Analista de T.I, faço manutenção de computadores para a empresa <strong>ECID</strong> e também presto serviços de tecnologia de forma autônoma. Sempre buscando soluções inovadoras e aprendizado constante.
     </p>
 
-    <h2 class="fade-in fade-in-delay-3">📌 Contatos e Redes</h2>
+    <h2 class="fade-in fade-in-delay-3">📌 Contatos & Links</h2>
     <div class="links fade-in fade-in-delay-3">
       <a href="https://github.com/Leo988ww" target="_blank"><i class="fab fa-github"></i> GitHub</a>
-      <a href="https://www.youtube.com/@tvpadrin" target="_blank"><i class="fab fa-youtube"></i> YouTube</a>
       <a href="https://instagram.com/leov.sb" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
+      <a href="https://www.youtube.com/@tvpadrin" target="_blank"><i class="fab fa-youtube"></i> YouTube</a>
       <a href="https://www.facebook.com/leonardo.barboza.7965" target="_blank"><i class="fab fa-facebook"></i> Facebook</a>
-      <a href="https://wa.me/5598999999999" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+      <a href="https://wa.me/5591999999999" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
     </div>
 
     <h2 class="fade-in fade-in-delay-3">📁 Projetos</h2>
@@ -121,7 +178,6 @@
       <li>💡 Projeto 1 – Em breve</li>
       <li>💡 Projeto 2 – Em construção</li>
     </ul>
-
   </div>
 
   <script>
@@ -133,7 +189,6 @@
         }
       });
     }, { threshold: 0.2 });
-
     items.forEach(item => observer.observe(item));
   </script>
 
