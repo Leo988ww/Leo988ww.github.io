@@ -14,9 +14,17 @@
 
     body {
       font-family: 'Roboto', sans-serif;
-      background-color: #1e1e1e;
+      background: linear-gradient(-45deg, #1e1e1e, #00ffff, #1e1e1e, #00ffff);
+      background-size: 400% 400%;
+      animation: gradientBG 15s ease infinite;
       color: #f1f1f1;
       padding: 20px;
+    }
+
+    @keyframes gradientBG {
+      0% {background-position: 0% 50%;}
+      50% {background-position: 100% 50%;}
+      100% {background-position: 0% 50%;}
     }
 
     .container {
@@ -31,6 +39,12 @@
       height: 150px;
       border: 3px solid #00ffff;
       margin-bottom: 15px;
+      transition: transform 0.3s, border-color 0.3s;
+    }
+
+    img:hover {
+      transform: scale(1.05);
+      border-color: #ff00ff;
     }
 
     h1 {
@@ -41,7 +55,11 @@
 
     p {
       margin-bottom: 30px;
-      font-size: 1.1em;
+      font-size: 1.2em;
+      line-height: 1.6;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     h2 {
@@ -55,29 +73,51 @@
       text-decoration: none;
       margin: 0 10px;
       font-weight: bold;
-      transition: color 0.3s;
       display: inline-flex;
       align-items: center;
+      padding: 10px 20px;
+      border: 2px solid #00ffff;
+      border-radius: 8px;
+      transition: all 0.3s ease;
     }
 
     .links a i {
-      margin-right: 8px; /* espaço entre ícone e texto */
+      margin-right: 8px;
       font-size: 1.2em;
       vertical-align: middle;
+      transition: transform 0.3s;
     }
 
     .links a:hover {
-      color: #ffffff;
+      background-color: #00ffff;
+      color: #1e1e1e;
+    }
+
+    .links a:hover i {
+      transform: rotate(15deg);
     }
 
     ul {
       list-style: none;
       padding: 0;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
     }
 
     li {
-      margin: 10px 0;
+      background-color: #2c2c2c;
+      padding: 15px 25px;
+      border-radius: 10px;
+      transition: transform 0.3s, box-shadow 0.3s;
+      cursor: pointer;
       font-size: 1.1em;
+    }
+
+    li:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 15px #00ffff;
     }
 
     @media (max-width: 600px) {
@@ -90,6 +130,11 @@
         margin: 10px 0;
         justify-content: center;
       }
+
+      ul {
+        flex-direction: column;
+        gap: 10px;
+      }
     }
   </style>
 </head>
@@ -99,7 +144,7 @@
     <h1>👨‍💻 Leonardo Dev</h1>
     <img src="https://i.imgur.com/q2aQLwf.jpeg" alt="Minha foto">
 
-    <p>Não sei programação, so sei jogar fifa.</p>
+    <p>Trabalho na empresa <strong>Alares</strong> como Analista de T.I, faço manutenção de computadores para a empresa <strong>ECID</strong> e também presto serviços de tecnologia de forma autônoma. Estou sempre em busca de novas soluções e aprendizado na área de tecnologia.</p>
 
     <h2>📌 Links</h2>
     <div class="links">
@@ -119,4 +164,3 @@
 
 </body>
 </html>
-
