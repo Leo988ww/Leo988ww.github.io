@@ -24,7 +24,6 @@
 
     .container { max-width: 900px; margin: 0 auto; text-align: center; }
 
-    /* Foto com hover */
     img.profile {
       border-radius: 50%;
       width: 160px;
@@ -42,7 +41,6 @@
     p { margin-bottom: 40px; font-size: 1.2em; line-height: 1.6; max-width: 750px; margin-left: auto; margin-right: auto; }
     h2 { color: #0ff; margin-top: 40px; margin-bottom: 20px; text-shadow: 0 0 10px #0ff; }
 
-    /* Links animados */
     .links a {
       color: #0ff;
       text-decoration: none;
@@ -54,16 +52,36 @@
       border: 2px solid #0ff;
       border-radius: 10px;
       transition: all 0.4s;
-      box-shadow: 0 0 10px #0ff;
+      box-shadow: 0 0 15px #0ff, 0 0 30px #ff0;
+      position: relative;
+      overflow: hidden;
     }
     .links a i { margin-right: 10px; font-size: 1.3em; transition: transform 0.3s; }
-    .links a:hover { background-color: #0ff; color: #1e1e1e; box-shadow: 0 0 25px #0ff, 0 0 50px #ff0; }
-    .links a:hover i { transform: rotate(20deg); }
 
-    /* Pulsar WhatsApp */
-    .whatsapp-float {
-      animation: pulse 2s infinite;
+    /* Neon Hover Effect */
+    .links a::before {
+      content: "";
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(45deg, #0ff, #ff0, #f0f);
+      transition: all 0.5s;
+      z-index: 0;
+      opacity: 0;
+      transform: rotate(45deg) scale(0.5);
     }
+    .links a:hover::before {
+      opacity: 1;
+      transform: rotate(45deg) scale(1);
+    }
+    .links a:hover { color: #1e1e1e; box-shadow: 0 0 25px #0ff, 0 0 50px #ff0; }
+    .links a:hover i { transform: rotate(20deg); }
+    .links a span { position: relative; z-index: 1; }
+
+    /* WhatsApp pulsando */
+    .whatsapp-float { animation: pulse 2s infinite; }
     @keyframes pulse {
       0% { transform: scale(1); }
       50% { transform: scale(1.1); }
@@ -106,14 +124,17 @@
 
     <h2 class="fade-in fade-in-delay-3">📌 Contato</h2>
     <div class="links fade-in fade-in-delay-3">
-      <a href="https://wa.me/5511999999999" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i> Me Chame no WhatsApp</a>
-      <a href="https://instagram.com/leov.sb" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
-      <a href="https://www.facebook.com/leonardo.barboza.7965" target="_blank"><i class="fab fa-facebook"></i> Facebook</a>
+      <a href="https://wa.me/5511999999999" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i> <span>WhatsApp</span></a>
+      <a href="https://github.com/Leo988ww" target="_blank"><i class="fab fa-github"></i> <span>GitHub</span></a>
+      <a href="https://instagram.com/leov.sb" target="_blank"><i class="fab fa-instagram"></i> <span>Instagram</span></a>
+      <a href="https://www.youtube.com/@tvpadrin" target="_blank"><i class="fab fa-youtube"></i> <span>YouTube</span></a>
+      <a href="https://www.facebook.com/leonardo.barboza.7965" target="_blank"><i class="fab fa-facebook"></i> <span>Facebook</span></a>
     </div>
 
     <h2 class="fade-in fade-in-delay-3">📁 Projetos</h2>
     <ul id="projects">
-      <li>💡 Projeto 1 – logo sai um </li>
+      <li>💡 Projeto 1 – Em breve</li>
+      <li>💡 Projeto 2 – Em construção</li>
     </ul>
   </div>
 
@@ -124,10 +145,8 @@
         if(entry.isIntersecting) entry.target.classList.add('visible');
       });
     }, { threshold: 0.2 });
-
     items.forEach(item => observer.observe(item));
   </script>
 
 </body>
 </html>
-
