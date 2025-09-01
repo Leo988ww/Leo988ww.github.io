@@ -3,139 +3,151 @@
 <head>
   <meta charset="UTF-8">
   <title>Portfólio do Leonardo</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
-      font-family: 'Roboto', sans-serif;
-      color: #f1f1f1;
-      padding: 20px;
+      font-family: 'Roboto Mono', monospace;
+      background-color: #000;
+      color: #00ff00;
       overflow-x: hidden;
       position: relative;
-      z-index: 1;
-      background-color: #0b0b0b;
     }
 
-    .container { max-width: 900px; margin: 0 auto; text-align: center; position: relative; z-index: 2; }
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: center;
+      position: relative;
+      z-index: 2;
+      padding: 20px;
+    }
 
-    .fade-in { opacity: 0; transform: translateY(30px); animation: fadeIn 1s forwards; }
-    .fade-in-delay { animation-delay: 0.5s; }
-    .fade-in-delay-2 { animation-delay: 1s; }
-    .fade-in-delay-3 { animation-delay: 1.5s; }
-    @keyframes fadeIn { to { opacity: 1; transform: translateY(0); } }
+    h1, h2, p, a { text-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00; }
+    h1 { font-size: 2.5em; margin-bottom: 15px; }
+    h2 { font-size: 1.8em; margin: 30px 0 15px; }
+    p { font-size: 1.1em; line-height: 1.6; margin-bottom: 40px; }
 
     img.profile {
       border-radius: 50%;
       width: 160px;
       height: 160px;
-      border: 4px solid #0ff;
+      border: 3px solid #00ff00;
       margin-bottom: 20px;
-      transition: transform 0.4s, border-color 0.4s, box-shadow 0.4s;
+      transition: transform 0.4s, box-shadow 0.4s;
     }
     img.profile:hover {
-      transform: scale(1.1) rotate(3deg);
-      border-color: #ff0;
-      box-shadow: 0 0 25px #0ff, 0 0 50px #ff0;
+      transform: scale(1.1);
+      box-shadow: 0 0 15px #00ff00, 0 0 30px #00ff00;
     }
-
-    h1 { font-size: 2.8em; color: #0ff; margin-bottom: 15px; text-shadow: 0 0 10px #0ff; }
-    p { margin-bottom: 40px; font-size: 1.2em; line-height: 1.6; max-width: 750px; margin-left: auto; margin-right: auto; }
-    h2 { color: #0ff; margin-top: 40px; margin-bottom: 20px; text-shadow: 0 0 10px #0ff; }
 
     .links a {
-      color: #0ff;
+      color: #00ff00;
       text-decoration: none;
-      margin: 10px;
-      font-weight: bold;
       display: inline-flex;
       align-items: center;
-      padding: 12px 25px;
-      border: 2px solid #0ff;
-      border-radius: 10px;
-      transition: all 0.4s;
-      box-shadow: 0 0 10px #0ff;
+      margin: 10px;
+      padding: 10px 20px;
+      border: 2px solid #00ff00;
+      border-radius: 8px;
+      transition: all 0.3s;
+      animation: blink 1.5s infinite;
     }
-    .links a i { margin-right: 10px; font-size: 1.3em; transition: transform 0.3s; }
-    .links a:hover { background-color: #0ff; color: #0b0b0b; box-shadow: 0 0 25px #0ff, 0 0 50px #ff0; }
-    .links a:hover i { transform: rotate(20deg); }
+    .links a i { margin-right: 8px; font-size: 1.2em; }
+    .links a:hover {
+      background-color: #00ff00;
+      color: #000;
+      box-shadow: 0 0 15px #00ff00, 0 0 30px #00ff00;
+    }
+    @keyframes blink {
+      0%, 49%, 100% { opacity: 1; }
+      50%, 99% { opacity: 0.6; }
+    }
 
     ul {
       list-style: none;
-      padding: 0;
       display: flex;
       justify-content: center;
-      gap: 25px;
       flex-wrap: wrap;
+      gap: 20px;
+      position: relative;
+      z-index: 2;
     }
     li {
-      background-color: #222;
-      padding: 20px 30px;
-      border-radius: 15px;
-      transition: all 0.4s;
-      cursor: pointer;
-      font-size: 1.15em;
-      box-shadow: 0 0 10px #0ff;
+      background-color: rgba(0, 0, 0, 0.5);
+      border: 1px solid #00ff00;
+      padding: 15px 25px;
+      border-radius: 8px;
+      transition: all 0.3s;
       opacity: 0;
-      transform: translateY(30px);
+      transform: translateY(20px);
+      box-shadow: 0 0 10px #00ff00;
+      cursor: pointer;
+      overflow: hidden;
+      position: relative;
     }
-    li.visible { opacity: 1; transform: translateY(0); transition: all 0.6s ease; }
-    li:hover { transform: translateY(-8px) scale(1.05); box-shadow: 0 0 20px #0ff, 0 0 40px #ff0; }
+    li.visible { opacity: 1; transform: translateY(0); }
+    li:hover { transform: scale(1.05); box-shadow: 0 0 20px #00ff00; }
 
-    /* Fundo Matrix */
-    .matrix {
+    /* Fundo matrix */
+    canvas#matrix {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      color: #0f0;
-      font-family: monospace;
-      font-size: 14px;
-      white-space: nowrap;
-      overflow: hidden;
+      z-index: 1;
+    }
+
+    /* Código passando sobre projetos */
+    .li-code {
+      position: absolute;
+      top: 0;
+      left: 0;
+      color: rgba(0,255,0,0.2);
+      font-size: 0.8em;
+      line-height: 1.1em;
+      white-space: pre;
       pointer-events: none;
       z-index: 0;
-      opacity: 0.05;
+      animation: moveCode 8s linear infinite;
+    }
+    @keyframes moveCode {
+      0% { transform: translateY(100%); }
+      100% { transform: translateY(-100%); }
     }
 
-    /* Linhas neon */
-    .line {
-      position: fixed;
-      width: 2px;
-      height: 100%;
-      background: #0ff;
-      opacity: 0.1;
-      animation: moveLine 5s linear infinite;
-      z-index: 0;
+    /* Terminal digitando */
+    .terminal {
+      color: #00ff00;
+      text-align: left;
+      font-size: 1em;
+      line-height: 1.4em;
+      margin: 10px auto 30px;
+      max-width: 600px;
+      min-height: 50px;
+      border-left: 2px solid #00ff00;
+      padding-left: 10px;
+      overflow: hidden;
+      white-space: pre;
     }
-    .line:nth-child(1) { left: 20%; animation-duration: 6s; }
-    .line:nth-child(2) { left: 50%; animation-duration: 8s; }
-    .line:nth-child(3) { left: 80%; animation-duration: 10s; }
-
-    @keyframes moveLine { 0% { top: -100%; } 100% { top: 100%; } }
-
-    /* Ícones flutuantes de computador */
-    .computer-bg {
-      position: absolute;
-      font-size: 50px;
-      color: rgba(0, 255, 255, 0.05);
-      animation: float 15s infinite linear;
-      z-index: 0;
+    .cursor {
+      display: inline-block;
+      background-color: #00ff00;
+      width: 8px;
+      animation: blinkCursor 0.8s infinite;
+      vertical-align: bottom;
+      margin-left: 2px;
     }
-    .computer-bg:nth-child(1) { top: 10%; left: 15%; animation-duration: 20s; }
-    .computer-bg:nth-child(2) { top: 30%; left: 70%; animation-duration: 25s; }
-    .computer-bg:nth-child(3) { top: 70%; left: 40%; animation-duration: 18s; }
-
-    @keyframes float {
-      0% { transform: translateY(0) rotate(0deg);}
-      50% { transform: translateY(-20px) rotate(20deg);}
-      100% { transform: translateY(0) rotate(0deg);}
+    @keyframes blinkCursor {
+      0%, 50%, 100% { opacity: 1; }
+      25%, 75% { opacity: 0; }
     }
 
     @media (max-width: 650px) {
-      h1 { font-size: 2.2em; }
+      h1 { font-size: 2em; }
       .links a { display: block; margin: 10px auto; }
       ul { flex-direction: column; gap: 15px; }
     }
@@ -143,54 +155,70 @@
 </head>
 <body>
 
-  <!-- Fundo Matrix -->
-  <div class="matrix">1010101010011010101010101010101010101010101010101010101010101010</div>
+<canvas id="matrix"></canvas>
 
-  <!-- Linhas neon -->
-  <div class="line"></div>
-  <div class="line"></div>
-  <div class="line"></div>
+<div class="container">
+  <h1>👨‍💻 Leonardo Barbosa</h1>
+  <div class="terminal" id="terminal"></div>
+  <img src="https://i.imgur.com/q2aQLwf.jpeg" alt="Minha foto" class="profile">
 
-  <!-- Ícones flutuantes -->
-  <i class="fas fa-laptop computer-bg"></i>
-  <i class="fas fa-microchip computer-bg"></i>
-  <i class="fas fa-tools computer-bg"></i>
+  <p>
+    Trabalho na empresa <strong>Alares</strong> como Analista de T.I, faço manutenção de computadores para a empresa <strong>ECID</strong> e também presto serviços de tecnologia de forma autônoma. Sempre buscando soluções inovadoras e aprendizado constante.
+  </p>
 
-  <div class="container fade-in">
-    <h1>👨‍💻 Leonardo Barbosa</h1>
-    <img src="https://i.imgur.com/q2aQLwf.jpeg" alt="Minha foto" class="profile fade-in fade-in-delay">
-
-    <p class="fade-in fade-in-delay-2">
-      Trabalho na empresa <strong>Alares</strong> como Analista de T.I, faço manutenção de computadores para a empresa <strong>ECID</strong> e também presto serviços de tecnologia de forma autônoma. Sempre buscando soluções inovadoras e aprendizado constante.
-    </p>
-
-    <h2 class="fade-in fade-in-delay-3">📌 Contatos & Links</h2>
-    <div class="links fade-in fade-in-delay-3">
-      <a href="https://github.com/Leo988ww" target="_blank"><i class="fab fa-github"></i> GitHub</a>
-      <a href="https://instagram.com/leov.sb" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
-      <a href="https://www.youtube.com/@tvpadrin" target="_blank"><i class="fab fa-youtube"></i> YouTube</a>
-      <a href="https://www.facebook.com/leonardo.barboza.7965" target="_blank"><i class="fab fa-facebook"></i> Facebook</a>
-      <a href="https://wa.me/5591999999999" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
-    </div>
-
-    <h2 class="fade-in fade-in-delay-3">📁 Projetos</h2>
-    <ul id="projects">
-      <li>💡 Projeto 1 – Em breve</li>
-      <li>💡 Projeto 2 – Em construção</li>
-    </ul>
+  <h2>📌 Contatos & Links</h2>
+  <div class="links">
+    <a href="https://github.com/Leo988ww" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+    <a href="https://instagram.com/leov.sb" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
+    <a href="https://www.youtube.com/@tvpadrin" target="_blank"><i class="fab fa-youtube"></i> YouTube</a>
+    <a href="https://www.facebook.com/leonardo.barboza.7965" target="_blank"><i class="fab fa-facebook"></i> Facebook</a>
+    <a href="https://wa.me/5591999999999" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
   </div>
 
-  <script>
-    const items = document.querySelectorAll('#projects li');
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if(entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      });
-    }, { threshold: 0.2 });
-    items.forEach(item => observer.observe(item));
-  </script>
+  <h2>📁 Projetos</h2>
+  <ul id="projects">
+    <li>💡 Projeto 1 – Em breve
+      <div class="li-code">System.out.println("Loading...");\nInitializing Hack Protocol...\nRun Diagnostics...\n</div>
+    </li>
+    <li>💡 Projeto 2 – Em construção
+      <div class="li-code">Booting AI Modules...\nScan Network...\nExecute Commands...\n</div>
+    </li>
+  </ul>
+</div>
 
-</body>
-</html>
+<script>
+  // Animação das li
+  const items = document.querySelectorAll('#projects li');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => { if(entry.isIntersecting) entry.target.classList.add('visible'); });
+  }, { threshold: 0.2 });
+  items.forEach(item => observer.observe(item));
+
+  // Matrix effect
+  const canvas = document.getElementById('matrix');
+  const ctx = canvas.getContext('2d');
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+  const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789@#$%^&*()*&^%';
+  const fontSize = 16;
+  const columns = canvas.width / fontSize;
+  const drops = Array.from({length: columns}).map(() => Math.random() * canvas.height);
+  function draw() {
+    ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = '#00ff00';
+    ctx.font = fontSize + 'px monospace';
+    for(let i=0; i<drops.length; i++){
+      const text = letters.charAt(Math.floor(Math.random()*letters.length));
+      ctx.fillText(text, i*fontSize, drops[i]);
+      drops[i] += fontSize;
+      if(drops[i] > canvas.height) drops[i] = 0;
+    }
+  }
+  setInterval(draw, 50);
+  window.addEventListener('resize', () => { canvas.width = window.innerWidth; canvas.height = window.innerHeight; });
+
+  // Terminal digitando
+  const terminalLines = [
+    "Iniciando Sistema...",
+    "Verifican
