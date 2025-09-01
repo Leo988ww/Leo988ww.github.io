@@ -19,6 +19,7 @@
       animation: gradientBG 15s ease infinite;
       color: #f1f1f1;
       padding: 20px;
+      overflow-x: hidden;
     }
 
     @keyframes gradientBG {
@@ -31,6 +32,32 @@
       max-width: 800px;
       margin: 0 auto;
       text-align: center;
+    }
+
+    /* Animação de entrada */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeIn 1s forwards;
+    }
+
+    .fade-in-delay {
+      animation-delay: 0.5s;
+    }
+
+    .fade-in-delay-2 {
+      animation-delay: 1s;
+    }
+
+    .fade-in-delay-3 {
+      animation-delay: 1.5s;
+    }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     img {
@@ -113,6 +140,14 @@
       transition: transform 0.3s, box-shadow 0.3s;
       cursor: pointer;
       font-size: 1.1em;
+      opacity: 0;
+      transform: translateY(30px);
+    }
+
+    li.visible {
+      opacity: 1;
+      transform: translateY(0);
+      transition: all 0.5s ease;
     }
 
     li:hover {
@@ -140,27 +175,41 @@
 </head>
 <body>
 
-  <div class="container">
+  <div class="container fade-in">
     <h1>👨‍💻 Leonardo Dev</h1>
-    <img src="https://i.imgur.com/q2aQLwf.jpeg" alt="Minha foto">
+    <img src="https://i.imgur.com/q2aQLwf.jpeg" alt="Minha foto" class="fade-in fade-in-delay">
 
-    <p>Trabalho na empresa <strong>Alares</strong> como Analista de T.I, faço manutenção de computadores para a empresa <strong>ECID</strong> e também presto serviços de tecnologia de forma autônoma. Estou sempre em busca de novas soluções e aprendizado na área de tecnologia.</p>
+    <p class="fade-in fade-in-delay-2">Trabalho na empresa <strong>Alares</strong> como Analista de T.I. Faço manutenção de computadores para a empresa <strong>ECID</strong> e também presto serviços de tecnologia de forma autônoma. Estou sempre em busca de novas soluções e aprendizado na área de tecnologia.</p>
 
-    <h2>📌 Links</h2>
-    <div class="links">
+    <h2 class="fade-in fade-in-delay-3">📌 Links</h2>
+    <div class="links fade-in fade-in-delay-3">
       <a href="https://github.com/Leo988ww" target="_blank"><i class="fab fa-github"></i> GitHub</a>
       <a href="https://instagram.com/leov.sb" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
       <a href="https://www.youtube.com/@tvpadrin" target="_blank"><i class="fab fa-youtube"></i> YouTube</a>
       <a href="https://www.facebook.com/leonardo.barboza.7965" target="_blank"><i class="fab fa-facebook"></i> Facebook</a>
     </div>
 
-    <h2>📁 Projetos</h2>
-    <ul>
+    <h2 class="fade-in fade-in-delay-3">📁 Projetos</h2>
+    <ul id="projects">
       <li>💡 Projeto 1 – Em breve</li>
       <li>💡 Projeto 2 – Em construção</li>
       <!-- Adicione mais projetos aqui -->
     </ul>
   </div>
+
+  <script>
+    // Efeito de aparecer os projetos conforme scroll
+    const items = document.querySelectorAll('#projects li');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.2 });
+
+    items.forEach(item => observer.observe(item));
+  </script>
 
 </body>
 </html>
