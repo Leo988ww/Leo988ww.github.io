@@ -6,11 +6,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
       font-family: 'Roboto', sans-serif;
@@ -28,24 +24,14 @@
       100% {background-position: 0% 50%;}
     }
 
-    .container {
-      max-width: 900px;
-      margin: 0 auto;
-      text-align: center;
-    }
+    .container { max-width: 900px; margin: 0 auto; text-align: center; }
 
-    .fade-in {
-      opacity: 0;
-      transform: translateY(30px);
-      animation: fadeIn 1s forwards;
-    }
+    .fade-in { opacity: 0; transform: translateY(30px); animation: fadeIn 1s forwards; }
     .fade-in-delay { animation-delay: 0.5s; }
     .fade-in-delay-2 { animation-delay: 1s; }
     .fade-in-delay-3 { animation-delay: 1.5s; }
 
-    @keyframes fadeIn {
-      to { opacity: 1; transform: translateY(0); }
-    }
+    @keyframes fadeIn { to { opacity: 1; transform: translateY(0); } }
 
     img.profile {
       border-radius: 50%;
@@ -61,28 +47,9 @@
       box-shadow: 0 0 25px #0ff, 0 0 50px #ff0;
     }
 
-    h1 {
-      font-size: 2.8em;
-      color: #0ff;
-      margin-bottom: 15px;
-      text-shadow: 0 0 10px #0ff;
-    }
-
-    p {
-      margin-bottom: 40px;
-      font-size: 1.2em;
-      line-height: 1.6;
-      max-width: 750px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    h2 {
-      color: #0ff;
-      margin-top: 40px;
-      margin-bottom: 20px;
-      text-shadow: 0 0 10px #0ff;
-    }
+    h1 { font-size: 2.8em; color: #0ff; margin-bottom: 15px; text-shadow: 0 0 10px #0ff; }
+    p { margin-bottom: 40px; font-size: 1.2em; line-height: 1.6; max-width: 750px; margin-left: auto; margin-right: auto; }
+    h2 { color: #0ff; margin-top: 40px; margin-bottom: 20px; text-shadow: 0 0 10px #0ff; }
 
     .links a {
       color: #0ff;
@@ -97,16 +64,8 @@
       transition: all 0.4s;
       box-shadow: 0 0 10px #0ff;
     }
-    .links a i {
-      margin-right: 10px;
-      font-size: 1.3em;
-      transition: transform 0.3s;
-    }
-    .links a:hover {
-      background-color: #0ff;
-      color: #1e1e1e;
-      box-shadow: 0 0 25px #0ff, 0 0 50px #ff0;
-    }
+    .links a i { margin-right: 10px; font-size: 1.3em; transition: transform 0.3s; }
+    .links a:hover { background-color: #0ff; color: #1e1e1e; box-shadow: 0 0 25px #0ff, 0 0 50px #ff0; }
     .links a:hover i { transform: rotate(20deg); }
 
     ul {
@@ -128,24 +87,10 @@
       opacity: 0;
       transform: translateY(30px);
     }
-    li.visible {
-      opacity: 1;
-      transform: translateY(0);
-      transition: all 0.6s ease;
-    }
-    li:hover {
-      transform: translateY(-8px) scale(1.05);
-      box-shadow: 0 0 20px #0ff, 0 0 40px #ff0;
-    }
+    li.visible { opacity: 1; transform: translateY(0); transition: all 0.6s ease; }
+    li:hover { transform: translateY(-8px) scale(1.05); box-shadow: 0 0 20px #0ff, 0 0 40px #ff0; }
 
-    .certificate {
-      width: 100%;
-      max-width: 800px;
-      border: 2px solid #0ff;
-      border-radius: 15px;
-      margin-top: 20px;
-      box-shadow: 0 0 15px #0ff;
-    }
+    .certificate { max-width: 800px; margin-top: 20px; }
 
     @media (max-width: 650px) {
       h1 { font-size: 2.2em; }
@@ -178,9 +123,13 @@
       <li>💡 Projeto 2 – Em construção</li>
     </ul>
 
-    <!-- Certificado -->
+    <!-- Certificado como link -->
     <h2 class="fade-in fade-in-delay-3">📜 Certificado</h2>
-    <img src="certificado-leonardo.png" alt="Certificado Leonardo Barbosa" class="certificate">
+    <div class="links fade-in fade-in-delay-3">
+      <a href="certificado-leonardo.png" target="_blank">
+        <i class="fas fa-file-image"></i> Ver Certificado
+      </a>
+    </div>
 
   </div>
 
