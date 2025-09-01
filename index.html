@@ -7,15 +7,17 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
+
     body {
       font-family: 'Roboto', sans-serif;
-      background: linear-gradient(120deg, #1e1e1e, #0ff, #1e1e1e, #0ff);
+      background: linear-gradient(120deg, #00f0ff, #ff00ff, #9400d3, #7fff00);
       background-size: 400% 400%;
       animation: gradientBG 20s ease infinite;
       color: #f1f1f1;
       padding: 20px;
       overflow-x: hidden;
     }
+
     @keyframes gradientBG {
       0% {background-position: 0% 50%;}
       50% {background-position: 100% 50%;}
@@ -24,86 +26,69 @@
 
     .container { max-width: 900px; margin: 0 auto; text-align: center; }
 
+    .fade-in { opacity: 0; transform: translateY(30px); animation: fadeIn 1s forwards; }
+    .fade-in-delay { animation-delay: 0.5s; }
+    .fade-in-delay-2 { animation-delay: 1s; }
+    .fade-in-delay-3 { animation-delay: 1.5s; }
+
+    @keyframes fadeIn { to { opacity: 1; transform: translateY(0); } }
+
     img.profile {
       border-radius: 50%;
       width: 160px;
       height: 160px;
-      border: 4px solid #0ff;
+      border: 4px solid #fff;
       margin-bottom: 20px;
-      transition: transform 0.4s, box-shadow 0.4s;
+      transition: transform 0.4s, border-color 0.4s, box-shadow 0.4s;
     }
     img.profile:hover {
-      transform: scale(1.15) rotate(5deg);
-      box-shadow: 0 0 30px #0ff, 0 0 60px #ff0;
+      transform: scale(1.1) rotate(3deg);
+      border-color: #ff0;
+      box-shadow: 0 0 25px #fff, 0 0 50px #ff0;
     }
 
-    h1 { font-size: 2.8em; color: #0ff; margin-bottom: 15px; text-shadow: 0 0 10px #0ff; }
+    h1 { font-size: 2.8em; color: #fff; margin-bottom: 15px; text-shadow: 0 0 10px #fff; }
     p { margin-bottom: 40px; font-size: 1.2em; line-height: 1.6; max-width: 750px; margin-left: auto; margin-right: auto; }
-    h2 { color: #0ff; margin-top: 40px; margin-bottom: 20px; text-shadow: 0 0 10px #0ff; }
+    h2 { color: #fff; margin-top: 40px; margin-bottom: 20px; text-shadow: 0 0 10px #fff; }
 
     .links a {
-      color: #0ff;
+      color: #fff;
       text-decoration: none;
       margin: 10px;
       font-weight: bold;
       display: inline-flex;
       align-items: center;
       padding: 12px 25px;
-      border: 2px solid #0ff;
+      border: 2px solid #fff;
       border-radius: 10px;
       transition: all 0.4s;
-      box-shadow: 0 0 15px #0ff, 0 0 30px #ff0;
-      position: relative;
-      overflow: hidden;
+      box-shadow: 0 0 10px #fff;
     }
     .links a i { margin-right: 10px; font-size: 1.3em; transition: transform 0.3s; }
-
-    /* Neon Hover Effect */
-    .links a::before {
-      content: "";
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: linear-gradient(45deg, #0ff, #ff0, #f0f);
-      transition: all 0.5s;
-      z-index: 0;
-      opacity: 0;
-      transform: rotate(45deg) scale(0.5);
-    }
-    .links a:hover::before {
-      opacity: 1;
-      transform: rotate(45deg) scale(1);
-    }
-    .links a:hover { color: #1e1e1e; box-shadow: 0 0 25px #0ff, 0 0 50px #ff0; }
+    .links a:hover { background-color: #fff; color: #1e1e1e; box-shadow: 0 0 25px #fff, 0 0 50px #ff0; }
     .links a:hover i { transform: rotate(20deg); }
-    .links a span { position: relative; z-index: 1; }
 
-    /* WhatsApp pulsando */
-    .whatsapp-float { animation: pulse 2s infinite; }
-    @keyframes pulse {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.1); }
-      100% { transform: scale(1); }
+    ul {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+      flex-wrap: wrap;
     }
-
-    /* Cards de projetos */
-    ul { list-style: none; padding: 0; display: flex; justify-content: center; gap: 25px; flex-wrap: wrap; }
     li {
       background-color: #222;
-      padding: 20px;
+      padding: 20px 30px;
       border-radius: 15px;
       transition: all 0.4s;
       cursor: pointer;
       font-size: 1.15em;
-      box-shadow: 0 0 10px #0ff;
+      box-shadow: 0 0 10px #fff;
       opacity: 0;
       transform: translateY(30px);
-      width: 250px;
     }
     li.visible { opacity: 1; transform: translateY(0); transition: all 0.6s ease; }
-    li:hover { transform: translateY(-8px) scale(1.05); box-shadow: 0 0 20px #0ff, 0 0 40px #ff0; }
+    li:hover { transform: translateY(-8px) scale(1.05); box-shadow: 0 0 20px #fff, 0 0 40px #ff0; }
 
     @media (max-width: 650px) {
       h1 { font-size: 2.2em; }
@@ -122,13 +107,13 @@
       Trabalho na empresa <strong>Alares</strong> como Analista de T.I, faço manutenção de computadores para a empresa <strong>ECID</strong> e também presto serviços de tecnologia de forma autônoma. Sempre buscando soluções inovadoras e aprendizado constante.
     </p>
 
-    <h2 class="fade-in fade-in-delay-3">📌 Contato</h2>
+    <h2 class="fade-in fade-in-delay-3">📌 Contatos e Redes</h2>
     <div class="links fade-in fade-in-delay-3">
-      <a href="https://wa.me/5511999999999" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i> <span>WhatsApp</span></a>
-      <a href="https://github.com/Leo988ww" target="_blank"><i class="fab fa-github"></i> <span>GitHub</span></a>
-      <a href="https://instagram.com/leov.sb" target="_blank"><i class="fab fa-instagram"></i> <span>Instagram</span></a>
-      <a href="https://www.youtube.com/@tvpadrin" target="_blank"><i class="fab fa-youtube"></i> <span>YouTube</span></a>
-      <a href="https://www.facebook.com/leonardo.barboza.7965" target="_blank"><i class="fab fa-facebook"></i> <span>Facebook</span></a>
+      <a href="https://github.com/Leo988ww" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+      <a href="https://www.youtube.com/@tvpadrin" target="_blank"><i class="fab fa-youtube"></i> YouTube</a>
+      <a href="https://instagram.com/leov.sb" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
+      <a href="https://www.facebook.com/leonardo.barboza.7965" target="_blank"><i class="fab fa-facebook"></i> Facebook</a>
+      <a href="https://wa.me/5598999999999" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
     </div>
 
     <h2 class="fade-in fade-in-delay-3">📁 Projetos</h2>
@@ -136,15 +121,19 @@
       <li>💡 Projeto 1 – Em breve</li>
       <li>💡 Projeto 2 – Em construção</li>
     </ul>
+
   </div>
 
   <script>
     const items = document.querySelectorAll('#projects li');
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
-        if(entry.isIntersecting) entry.target.classList.add('visible');
+        if(entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
       });
     }, { threshold: 0.2 });
+
     items.forEach(item => observer.observe(item));
   </script>
 
