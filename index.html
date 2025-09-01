@@ -7,7 +7,6 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
-
     body {
       font-family: 'Roboto', sans-serif;
       background: linear-gradient(120deg, #1e1e1e, #0ff, #1e1e1e, #0ff);
@@ -16,9 +15,7 @@
       color: #f1f1f1;
       padding: 20px;
       overflow-x: hidden;
-      position: relative;
     }
-
     @keyframes gradientBG {
       0% {background-position: 0% 50%;}
       50% {background-position: 100% 50%;}
@@ -27,41 +24,29 @@
 
     .container { max-width: 900px; margin: 0 auto; text-align: center; }
 
-    .fade-in { opacity: 0; transform: translateY(30px); animation: fadeIn 1s forwards; }
-    .fade-in-delay { animation-delay: 0.5s; }
-    .fade-in-delay-2 { animation-delay: 1s; }
-    .fade-in-delay-3 { animation-delay: 1.5s; }
-
-    @keyframes fadeIn { to { opacity: 1; transform: translateY(0); } }
-
+    /* Foto com hover */
     img.profile {
       border-radius: 50%;
       width: 160px;
       height: 160px;
       border: 4px solid #0ff;
       margin-bottom: 20px;
-      transition: transform 0.4s, border-color 0.4s, box-shadow 0.4s;
+      transition: transform 0.4s, box-shadow 0.4s;
     }
     img.profile:hover {
-      transform: scale(1.1) rotate(3deg);
-      border-color: #ff0;
-      box-shadow: 0 0 25px #0ff, 0 0 50px #ff0;
+      transform: scale(1.15) rotate(5deg);
+      box-shadow: 0 0 30px #0ff, 0 0 60px #ff0;
     }
 
     h1 { font-size: 2.8em; color: #0ff; margin-bottom: 15px; text-shadow: 0 0 10px #0ff; }
     p { margin-bottom: 40px; font-size: 1.2em; line-height: 1.6; max-width: 750px; margin-left: auto; margin-right: auto; }
     h2 { color: #0ff; margin-top: 40px; margin-bottom: 20px; text-shadow: 0 0 10px #0ff; }
 
-    .links {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 15px;
-      margin-bottom: 20px;
-    }
+    /* Links animados */
     .links a {
       color: #0ff;
       text-decoration: none;
+      margin: 10px;
       font-weight: bold;
       display: inline-flex;
       align-items: center;
@@ -75,45 +60,21 @@
     .links a:hover { background-color: #0ff; color: #1e1e1e; box-shadow: 0 0 25px #0ff, 0 0 50px #ff0; }
     .links a:hover i { transform: rotate(20deg); }
 
-    /* Botão flutuante WhatsApp */
+    /* Pulsar WhatsApp */
     .whatsapp-float {
-      position: fixed;
-      bottom: 30px;
-      right: 30px;
-      background-color: #25D366;
-      color: #fff;
-      border-radius: 50px;
-      padding: 15px 20px;
-      font-size: 18px;
-      font-weight: bold;
-      box-shadow: 0 5px 20px rgba(0,0,0,0.4);
-      z-index: 1000;
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-      transition: all 0.3s;
+      animation: pulse 2s infinite;
     }
-    .whatsapp-float i {
-      margin-right: 10px;
-      font-size: 24px;
-    }
-    .whatsapp-float:hover {
-      background-color: #128C7E;
-      transform: scale(1.1);
-      box-shadow: 0 5px 25px rgba(0,0,0,0.5);
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
     }
 
-    ul {
-      list-style: none;
-      padding: 0;
-      display: flex;
-      justify-content: center;
-      gap: 25px;
-      flex-wrap: wrap;
-    }
+    /* Cards de projetos */
+    ul { list-style: none; padding: 0; display: flex; justify-content: center; gap: 25px; flex-wrap: wrap; }
     li {
       background-color: #222;
-      padding: 20px 30px;
+      padding: 20px;
       border-radius: 15px;
       transition: all 0.4s;
       cursor: pointer;
@@ -121,6 +82,7 @@
       box-shadow: 0 0 10px #0ff;
       opacity: 0;
       transform: translateY(30px);
+      width: 250px;
     }
     li.visible { opacity: 1; transform: translateY(0); transition: all 0.6s ease; }
     li:hover { transform: translateY(-8px) scale(1.05); box-shadow: 0 0 20px #0ff, 0 0 40px #ff0; }
@@ -142,15 +104,9 @@
       Trabalho na empresa <strong>Alares</strong> como Analista de T.I, faço manutenção de computadores para a empresa <strong>ECID</strong> e também presto serviços de tecnologia de forma autônoma. Sempre buscando soluções inovadoras e aprendizado constante.
     </p>
 
-    <!-- Links principais -->
-    <h2 class="fade-in fade-in-delay-3">📌 Links</h2>
+    <h2 class="fade-in fade-in-delay-3">📌 Contato</h2>
     <div class="links fade-in fade-in-delay-3">
-      <a href="https://github.com/Leo988ww" target="_blank"><i class="fab fa-github"></i> GitHub</a>
-      <a href="https://www.youtube.com/@tvpadrin" target="_blank"><i class="fab fa-youtube"></i> YouTube</a>
-    </div>
-
-    <!-- Links sociais secundários -->
-    <div class="links fade-in fade-in-delay-3">
+      <a href="https://wa.me/5511999999999" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i> Me Chame no WhatsApp</a>
       <a href="https://instagram.com/leov.sb" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
       <a href="https://www.facebook.com/leonardo.barboza.7965" target="_blank"><i class="fab fa-facebook"></i> Facebook</a>
     </div>
@@ -160,21 +116,13 @@
       <li>💡 Projeto 1 – Em breve</li>
       <li>💡 Projeto 2 – Em construção</li>
     </ul>
-
   </div>
-
-  <!-- Botão WhatsApp flutuante -->
-  <a href="https://wa.me/35999609514" target="_blank" class="whatsapp-float">
-    <i class="fab fa-whatsapp"></i> Me chamar no WhatsApp
-  </a>
 
   <script>
     const items = document.querySelectorAll('#projects li');
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
-        if(entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
+        if(entry.isIntersecting) entry.target.classList.add('visible');
       });
     }, { threshold: 0.2 });
 
@@ -183,4 +131,3 @@
 
 </body>
 </html>
-
