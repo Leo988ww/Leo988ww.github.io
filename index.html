@@ -16,6 +16,7 @@
       color: #f1f1f1;
       padding: 20px;
       overflow-x: hidden;
+      position: relative;
     }
 
     @keyframes gradientBG {
@@ -51,10 +52,16 @@
     p { margin-bottom: 40px; font-size: 1.2em; line-height: 1.6; max-width: 750px; margin-left: auto; margin-right: auto; }
     h2 { color: #0ff; margin-top: 40px; margin-bottom: 20px; text-shadow: 0 0 10px #0ff; }
 
+    .links {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin-bottom: 20px;
+    }
     .links a {
       color: #0ff;
       text-decoration: none;
-      margin: 10px;
       font-weight: bold;
       display: inline-flex;
       align-items: center;
@@ -67,6 +74,34 @@
     .links a i { margin-right: 10px; font-size: 1.3em; transition: transform 0.3s; }
     .links a:hover { background-color: #0ff; color: #1e1e1e; box-shadow: 0 0 25px #0ff, 0 0 50px #ff0; }
     .links a:hover i { transform: rotate(20deg); }
+
+    /* Botão flutuante WhatsApp */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background-color: #25D366;
+      color: #fff;
+      border-radius: 50px;
+      padding: 15px 20px;
+      font-size: 18px;
+      font-weight: bold;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.4);
+      z-index: 1000;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      transition: all 0.3s;
+    }
+    .whatsapp-float i {
+      margin-right: 10px;
+      font-size: 24px;
+    }
+    .whatsapp-float:hover {
+      background-color: #128C7E;
+      transform: scale(1.1);
+      box-shadow: 0 5px 25px rgba(0,0,0,0.5);
+    }
 
     ul {
       list-style: none;
@@ -107,14 +142,17 @@
       Trabalho na empresa <strong>Alares</strong> como Analista de T.I, faço manutenção de computadores para a empresa <strong>ECID</strong> e também presto serviços de tecnologia de forma autônoma. Sempre buscando soluções inovadoras e aprendizado constante.
     </p>
 
+    <!-- Links principais -->
     <h2 class="fade-in fade-in-delay-3">📌 Links</h2>
     <div class="links fade-in fade-in-delay-3">
       <a href="https://github.com/Leo988ww" target="_blank"><i class="fab fa-github"></i> GitHub</a>
-      <a href="https://instagram.com/leov.sb" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
       <a href="https://www.youtube.com/@tvpadrin" target="_blank"><i class="fab fa-youtube"></i> YouTube</a>
+    </div>
+
+    <!-- Links sociais secundários -->
+    <div class="links fade-in fade-in-delay-3">
+      <a href="https://instagram.com/leov.sb" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
       <a href="https://www.facebook.com/leonardo.barboza.7965" target="_blank"><i class="fab fa-facebook"></i> Facebook</a>
-      <!-- WhatsApp -->
-      <a href="https://wa.me/35999609514" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
     </div>
 
     <h2 class="fade-in fade-in-delay-3">📁 Projetos</h2>
@@ -124,6 +162,11 @@
     </ul>
 
   </div>
+
+  <!-- Botão WhatsApp flutuante -->
+  <a href="https://wa.me/553599887777" target="_blank" class="whatsapp-float">
+    <i class="fab fa-whatsapp"></i> Me chamar no WhatsApp
+  </a>
 
   <script>
     const items = document.querySelectorAll('#projects li');
