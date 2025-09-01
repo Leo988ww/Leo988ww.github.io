@@ -47,7 +47,7 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    img {
+    img.profile {
       border-radius: 50%;
       width: 160px;
       height: 160px;
@@ -55,7 +55,7 @@
       margin-bottom: 20px;
       transition: transform 0.4s, border-color 0.4s, box-shadow 0.4s;
     }
-    img:hover {
+    img.profile:hover {
       transform: scale(1.1) rotate(3deg);
       border-color: #ff0;
       box-shadow: 0 0 25px #0ff, 0 0 50px #ff0;
@@ -138,7 +138,9 @@
       box-shadow: 0 0 20px #0ff, 0 0 40px #ff0;
     }
 
-    iframe {
+    .certificate {
+      width: 100%;
+      max-width: 800px;
       border: 2px solid #0ff;
       border-radius: 15px;
       margin-top: 20px;
@@ -156,7 +158,7 @@
 
   <div class="container fade-in">
     <h1>👨‍💻 Leonardo Barbosa</h1>
-    <img src="https://i.imgur.com/q2aQLwf.jpeg" alt="Minha foto" class="fade-in fade-in-delay">
+    <img src="https://i.imgur.com/q2aQLwf.jpeg" alt="Minha foto" class="profile fade-in fade-in-delay">
 
     <p class="fade-in fade-in-delay-2">
       Trabalho na empresa <strong>Alares</strong> como Analista de T.I, faço manutenção de computadores para a empresa <strong>ECID</strong> e também presto serviços de tecnologia de forma autônoma. Sempre buscando soluções inovadoras e aprendizado constante.
@@ -178,12 +180,7 @@
 
     <!-- Certificado -->
     <h2 class="fade-in fade-in-delay-3">📜 Certificado</h2>
-    <div class="links fade-in fade-in-delay-3">
-      <a href="certificado-leonardo.pdf" target="_blank">
-        <i class="fas fa-certificate"></i> Ver Certificado
-      </a>
-    </div>
-    <iframe src="certificado-leonardo.pdf" width="100%" height="600px"></iframe>
+    <img src="certificado-leonardo.png" alt="Certificado Leonardo Barbosa" class="certificate">
 
   </div>
 
