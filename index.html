@@ -15,7 +15,6 @@
       position: relative;
     }
 
-    /* Canvas para o fundo estilo CMD hacker intenso */
     canvas#cmd-bg {
       position: fixed;
       top: 0;
@@ -55,9 +54,26 @@
       box-shadow: 0 0 25px #0ff, 0 0 50px #ff0;
     }
 
-    h1 { font-size: 2.8em; color: #0ff; margin-bottom: 15px; text-shadow: 0 0 10px #0ff; }
-    p { margin-bottom: 40px; font-size: 1.2em; line-height: 1.6; max-width: 750px; margin-left: auto; margin-right: auto; }
-    h2 { color: #0ff; margin-top: 40px; margin-bottom: 20px; text-shadow: 0 0 10px #0ff; }
+    h1 {
+      font-size: 2.8em;
+      color: #00ff00;
+      margin-bottom: 15px;
+      text-shadow: 0 0 5px #00ff00, 0 0 15px #0ff, 0 0 30px #0ff;
+    }
+    h2 {
+      color: #00ff00;
+      margin-top: 40px;
+      margin-bottom: 20px;
+      text-shadow: 0 0 5px #00ff00, 0 0 10px #0ff, 0 0 20px #0ff;
+    }
+    p {
+      margin-bottom: 40px;
+      font-size: 1.2em;
+      line-height: 1.6;
+      max-width: 750px;
+      margin-left: auto;
+      margin-right: auto;
+    }
 
     .links a {
       color: #0ff;
@@ -70,10 +86,10 @@
       border: 2px solid #0ff;
       border-radius: 10px;
       transition: all 0.4s;
-      box-shadow: 0 0 10px #0ff;
+      box-shadow: 0 0 5px #0ff, 0 0 10px #0ff;
     }
     .links a i { margin-right: 10px; font-size: 1.3em; transition: transform 0.3s; }
-    .links a:hover { background-color: #0ff; color: #1e1e1e; box-shadow: 0 0 25px #0ff, 0 0 50px #ff0; }
+    .links a:hover { background-color: #0ff; color: #1e1e1e; box-shadow: 0 0 15px #0ff, 0 0 30px #0ff; }
     .links a:hover i { transform: rotate(20deg); }
 
     ul {
@@ -85,18 +101,18 @@
       flex-wrap: wrap;
     }
     li {
-      background-color: #222;
+      background-color: rgba(0,0,0,0.7);
       padding: 20px 30px;
       border-radius: 15px;
       transition: all 0.4s;
       cursor: pointer;
       font-size: 1.15em;
-      box-shadow: 0 0 10px #0ff;
+      box-shadow: 0 0 5px #0ff;
       opacity: 0;
       transform: translateY(30px);
     }
     li.visible { opacity: 1; transform: translateY(0); transition: all 0.6s ease; }
-    li:hover { transform: translateY(-8px) scale(1.05); box-shadow: 0 0 20px #0ff, 0 0 40px #ff0; }
+    li:hover { transform: translateY(-8px) scale(1.05); box-shadow: 0 0 15px #0ff, 0 0 25px #0ff; }
 
     @media (max-width: 650px) {
       h1 { font-size: 2.2em; }
@@ -114,6 +130,7 @@
     <img src="https://i.imgur.com/q2aQLwf.jpeg" alt="Minha foto" class="profile fade-in fade-in-delay">
 
     <p class="fade-in fade-in-delay-2">
+      Cursando <strong>Gestão da Tecnologia da Informação</strong>.<br>
       Trabalho na empresa <strong>Alares</strong> como Analista de T.I, faço manutenção de computadores para a empresa <strong>ECID</strong> e também presto serviços de tecnologia de forma autônoma. Sempre buscando soluções inovadoras e aprendizado constante.
     </p>
 
@@ -145,7 +162,7 @@
     }, { threshold: 0.2 });
     items.forEach(item => observer.observe(item));
 
-    // Fundo hacker mais intenso
+    // Fundo hacker intenso
     const canvas = document.getElementById('cmd-bg');
     const ctx = canvas.getContext('2d');
     canvas.width = window.innerWidth;
@@ -157,20 +174,20 @@
     const drops = Array.from({length: columns}).map(() => Math.random() * canvas.height);
 
     function draw() {
-      ctx.fillStyle = 'rgba(0,0,0,0.05)'; // Fundo escurecendo pouco
+      ctx.fillStyle = 'rgba(0,0,0,0.05)';
       ctx.fillRect(0,0,canvas.width,canvas.height);
-      ctx.fillStyle = '#00ff00'; // Verde hacker
+      ctx.fillStyle = '#00ff00';
       ctx.font = fontSize + "px monospace";
 
       for(let i=0; i<drops.length; i++){
         const text = letters.charAt(Math.floor(Math.random()*letters.length));
         ctx.fillText(text, i*fontSize, drops[i]);
-        drops[i] += Math.random() * 20 + 5; // Velocidade variável
+        drops[i] += Math.random() * 20 + 5;
         if(drops[i] > canvas.height) drops[i] = 0;
       }
     }
 
-    setInterval(draw, 35); // Mais rápido para efeito intenso
+    setInterval(draw, 35);
 
     window.addEventListener('resize', () => {
       canvas.width = window.innerWidth;
