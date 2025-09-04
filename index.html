@@ -1,241 +1,116 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Portfólio do Leonardo</title>
-  <meta name="description" content="Leonardo Barbosa — Analista de TI. Portfólio, contatos e projetos.">
+  <meta name="description" content="Leonardo Barbosa — Analista de TI. Atendo Alares, ECID e clientes autônomos. Redes Mikrotik, manutenção de PCs, impressoras térmicas e suporte remoto." />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <meta property="og:title" content="Portfólio do Leonardo" />
+  <meta property="og:description" content="Analista de TI — Redes Mikrotik, manutenção e suporte." />
+  <meta property="og:type" content="website" />
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root{
+      --bg:#0b0b0b; --fg:#f1f1f1; --acc:#00ff9c; --acc2:#00e0ff; --card:rgba(0,0,0,.55);
+    }
+    *{margin:0;padding:0;box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{font-family:'Roboto',sans-serif;color:var(--fg);background:var(--bg);overflow-x:hidden;position:relative}
 
-    body {
-      font-family: 'Roboto', sans-serif;
-      color: #f1f1f1;
-      background: #0b0b0b;
-      overflow-x: hidden;
-      position: relative;
-    }
+    /* Background canvas */
+    #cmd-bg{position:fixed;inset:0;width:100%;height:100%;z-index:0}
 
-    canvas#cmd-bg {
-      position: fixed;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 0;
-    }
+    /* Top gradient overlay for depth */
+    .overlay{position:fixed;inset:0;pointer-events:none;background:radial-gradient(1200px 600px at 20% -10%, rgba(0,255,156,.15), transparent 60%), radial-gradient(1200px 600px at 80% 110%, rgba(0,224,255,.12), transparent 60%);z-index:1}
 
-    .container {
-      max-width: 900px;
-      margin: 0 auto;
-      text-align: center;
-      position: relative;
-      z-index: 2;
-      padding: 20px;
-    }
+    /* Layout */
+    .container{max-width:1000px;margin:0 auto;position:relative;z-index:2;padding:24px}
+    header.site{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:10px 0;position:sticky;top:0;background:linear-gradient(to bottom, rgba(11,11,11,.85), rgba(11,11,11,.35), transparent);backdrop-filter:saturate(140%) blur(6px);z-index:3}
+    .brand{display:flex;align-items:center;gap:12px}
+    .brand img{border-radius:50%;width:48px;height:48px;border:2px solid var(--acc2)}
+    .brand h1{font-size:1.25rem;color:var(--acc);text-shadow:0 0 6px rgba(0,255,156,.5)}
+    nav a{color:var(--fg);text-decoration:none;margin-left:14px;font-weight:700;opacity:.9}
+    nav a:hover, nav a:focus{color:var(--acc);outline:none}
 
-    .fade-in { opacity: 0; transform: translateY(30px); animation: fadeIn 1s forwards; }
-    .fade-in-delay { animation-delay: 0.5s; }
-    .fade-in-delay-2 { animation-delay: 1s; }
-    .fade-in-delay-3 { animation-delay: 1.5s; }
+    /* Hero */
+    .hero{display:grid;grid-template-columns:1.1fr .9fr;gap:28px;align-items:center;margin-top:12px}
+    @media(max-width:800px){.hero{grid-template-columns:1fr;text-align:center}}
+    .hero .photo{display:flex;justify-content:center}
+    .hero .photo img{border-radius:50%;width:160px;height:160px;border:4px solid var(--acc2);box-shadow:0 0 20px rgba(0,224,255,.45);transition:transform .4s}
+    .hero .photo img:hover{transform:scale(1.05) rotate(2deg)}
+    .title{font-size:2.4rem;color:#00ff00;margin-bottom:10px;text-shadow:0 0 5px #00ff00,0 0 15px var(--acc2)}
+    .subtitle{font-size:1.1rem;line-height:1.6;opacity:.95}
+    .cta{margin-top:18px;display:flex;gap:12px;flex-wrap:wrap}
+    .btn{display:inline-flex;align-items:center;gap:10px;padding:12px 18px;border-radius:12px;border:2px solid var(--acc2);text-decoration:none;color:var(--fg);font-weight:700;box-shadow:0 0 6px var(--acc2)}
+    .btn:hover{background:var(--acc2);color:#071217}
 
-    @keyframes fadeIn { to { opacity: 1; transform: translateY(0); } }
+    /* Cards */
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:36px}
+    @media(max-width:900px){.grid{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:640px){.grid{grid-template-columns:1fr}}
+    .card{background:var(--card);border:1px solid rgba(0,224,255,.25);border-radius:16px;padding:18px;box-shadow:0 8px 24px rgba(0,0,0,.35)}
+    .card h3{color:var(--acc);margin-bottom:10px}
+    .card p{opacity:.95;line-height:1.6}
 
-    img.profile {
-      border-radius: 50%;
-      width: 160px;
-      height: 160px;
-      border: 4px solid #0ff;
-      margin-bottom: 20px;
-      transition: transform 0.4s, border-color 0.4s, box-shadow 0.4s;
-    }
-    img.profile:hover {
-      transform: scale(1.1) rotate(3deg);
-      border-color: #ff0;
-      box-shadow: 0 0 25px #0ff, 0 0 50px #ff0;
-    }
+    /* Chips */
+    .chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+    .chip{padding:8px 12px;border-radius:999px;border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.06);font-size:.95rem}
 
-    h1 {
-      font-size: 2.8em;
-      color: #00ff00;
-      margin-bottom: 15px;
-      text-shadow: 0 0 5px #00ff00, 0 0 15px #0ff, 0 0 30px #0ff;
-    }
-    h2 {
-      color: #00ff00;
-      margin-top: 40px;
-      margin-bottom: 20px;
-      text-shadow: 0 0 5px #00ff00, 0 0 10px #0ff, 0 0 20px #0ff;
-    }
-    p {
-      margin-bottom: 20px;
-      font-size: 1.2em;
-      line-height: 1.6;
-      max-width: 750px;
-      margin-left: auto;
-      margin-right: auto;
-    }
+    /* Links list */
+    .links{display:flex;flex-wrap:wrap;gap:12px;margin-top:14px}
+    .links a{color:var(--fg);text-decoration:none;border:1.5px solid rgba(0,224,255,.45);border-radius:10px;padding:10px 14px;display:inline-flex;align-items:center;gap:10px;box-shadow:0 0 6px rgba(0,224,255,.45)}
+    .links a:hover{background:rgba(0,224,255,.9);color:#071217}
+    .links a:focus{outline:3px solid #ff0;outline-offset:3px}
 
-    .links a {
-      color: #0ff;
-      text-decoration: none;
-      margin: 10px;
-      font-weight: bold;
-      display: inline-flex;
-      align-items: center;
-      padding: 12px 25px;
-      border: 2px solid #0ff;
-      border-radius: 10px;
-      transition: all 0.4s;
-      box-shadow: 0 0 5px #0ff, 0 0 10px #0ff;
-    }
-    .links a i { margin-right: 10px; font-size: 1.3em; transition: transform 0.3s; }
-    .links a:hover { background-color: #0ff; color: #1e1e1e; box-shadow: 0 0 15px #0ff, 0 0 30px #0ff; }
-    .links a:hover i { transform: rotate(20deg); }
-    .links a:focus { outline: 3px solid #ff0; outline-offset: 3px; }
-
-    ul {
-      list-style: none;
-      padding: 0;
-      display: flex;
-      justify-content: center;
-      gap: 25px;
-      flex-wrap: wrap;
-    }
-    li {
-      background-color: rgba(0,0,0,0.7);
-      padding: 20px 30px;
-      border-radius: 15px;
-      transition: all 0.4s;
-      cursor: pointer;
-      font-size: 1.15em;
-      box-shadow: 0 0 5px #0ff;
-      opacity: 0;
-      transform: translateY(30px);
-    }
-    li.visible { opacity: 1; transform: translateY(0); transition: all 0.6s ease; }
-    li:hover { transform: translateY(-8px) scale(1.05); box-shadow: 0 0 15px #0ff, 0 0 25px #0ff; }
-
-    @media (max-width: 650px) {
-      h1 { font-size: 2.2em; }
-      .links a { display: block; margin: 10px auto; }
-      ul { flex-direction: column; gap: 15px; }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      .fade-in, .fade-in-delay, .fade-in-delay-2, .fade-in-delay-3 { animation: none !important; opacity: 1; transform: none; }
-      img.profile { transition: none; }
-      li { transition: none; opacity: 1; transform: none; }
-    }
+    footer{margin:40px 0 12px;text-align:center;opacity:.9}
   </style>
 </head>
 <body>
   <canvas id="cmd-bg" aria-hidden="true"></canvas>
+  <div class="overlay" aria-hidden="true"></div>
 
-  <header class="container fade-in">
-    <h1>👨‍💻 Leonardo Barbosa</h1>
-    <img src="https://i.imgur.com/q2aQLwf.jpeg" alt="Minha foto" class="profile fade-in fade-in-delay" width="160" height="160" loading="lazy">
-    <p class="fade-in fade-in-delay-2">
-      Trabalho na empresa <strong>Alares</strong> como Analista de T.I, faço manutenção de computadores para a empresa <strong>ECID</strong> e também presto serviços de tecnologia de forma autônoma. Sempre buscando soluções inovadoras e aprendizado constante.
-    </p>
-  </header>
+  <div class="container">
+    <!-- Topbar -->
+    <header class="site" role="banner">
+      <div class="brand">
+        <img src="https://i.imgur.com/q2aQLwf.jpeg" alt="Foto de perfil do Leonardo" width="48" height="48" loading="lazy" />
+        <h1>Leonardo Barbosa • Analista de TI</h1>
+      </div>
+      <nav aria-label="Principal">
+        <a href="#sobre">Sobre</a>
+        <a href="#servicos">Serviços</a>
+        <a href="#experiencia">Experiência</a>
+        <a href="#contato">Contato</a>
+      </nav>
+    </header>
 
-  <main class="container" role="main">
-    <section aria-labelledby="sec-curso">
-      <h2 id="sec-curso" class="fade-in fade-in-delay-3">🎓 Meu curso</h2>
-      <div class="links fade-in fade-in-delay-2">
-        <a href="https://www.anhanguera.com/aluno/login" target="_blank" rel="noopener noreferrer">
-          <i class="fas fa-university" aria-hidden="true"></i> <span>Meu Curso na Anhanguera</span>
-        </a>
+    <!-- Hero -->
+    <section class="hero" id="sobre">
+      <div>
+        <h2 class="title">Tecnologia que resolve.</h2>
+        <p class="subtitle">
+          Atuo como Analista de T.I na <strong>Alares</strong>, realizo manutenção para a <strong>ECID</strong> e presto serviços como autônomo pela <strong>TechPC Assistência Lc</strong>. 
+          Experiência com redes <strong>Mikrotik</strong> e <strong>VLANs</strong>, configuração de <strong>impressoras térmicas (Zebra)</strong>, suporte remoto, formatação/backup e otimização de máquinas.
+        </p>
+        <div class="cta">
+          <a class="btn" href="https://wa.me/35999609514" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i>Fale comigo</a>
+          <a class="btn" href="mailto:leonardo@example.com"><i class="fa-solid fa-envelope"></i>Email</a>
+        </div>
+        <div class="chips" aria-label="Habilidades principais">
+          <span class="chip">Redes Mikrotik</span>
+          <span class="chip">VLANs / Switches</span>
+          <span class="chip">Impressoras Zebra</span>
+          <span class="chip">Windows / Drivers</span>
+          <span class="chip">Suporte remoto</span>
+          <span class="chip">OBS / Lives</span>
+        </div>
+      </div>
+      <div class="photo">
+        <img src="https://i.imgur.com/q2aQLwf.jpeg" alt="Leonardo Barbosa" width="160" height="160" loading="lazy" />
       </div>
     </section>
 
-    <section aria-labelledby="sec-contatos">
-      <h2 id="sec-contatos" class="fade-in fade-in-delay-3">📌 Contatos</h2>
-      <div class="links fade-in fade-in-delay-3">
-        <a href="https://github.com/Leo988ww" target="_blank" rel="noopener noreferrer"><i class="fab fa-github" aria-hidden="true"></i> <span>GitHub</span></a>
-        <a href="https://www.youtube.com/@tvpadrin" target="_blank" rel="noopener noreferrer"><i class="fab fa-youtube" aria-hidden="true"></i> <span>YouTube</span></a>
-        <a href="https://instagram.com/leov.sb" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram" aria-hidden="true"></i> <span>Instagram</span></a>
-        <a href="https://www.facebook.com/leonardo.barboza.7965" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook" aria-hidden="true"></i> <span>Facebook</span></a>
-        <a href="https://wa.me/35999609514" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp" aria-hidden="true"></i> <span>WhatsApp</span></a>
-      </div>
-    </section>
-
-    <section aria-labelledby="sec-projetos">
-      <h2 id="sec-projetos" class="fade-in fade-in-delay-3">📁 Projetos</h2>
-      <ul id="projects" aria-live="polite">
-        <li>
-          💡 Projeto 1 – Organização de Arquivos para a empresa <strong>Alares</strong><br>
-          <small>Desenvolvi um projeto para ajudar os colaboradores a se organizarem e armazenarem arquivos de forma mais eficiente e segura.</small>
-        </li>
-        <li>💡 Projeto 2 – Em construção</li>
-      </ul>
-    </section>
-  </main>
-
-  <footer class="container" role="contentinfo">
-    <p>© <span id="year"></span> Leonardo Barbosa • Feito com HTML, CSS e JavaScript</p>
-  </footer>
-
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    const items = document.querySelectorAll('#projects li');
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
-    }, { threshold: 0.2 });
-    items.forEach(item => observer.observe(item));
-
-    const canvas = document.getElementById('cmd-bg');
-    const ctx = canvas.getContext('2d');
-    const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%^&*()*&^%';
-    const baseFont = 16;
-    let fontSize, columns, drops, running = true;
-
-    const mediaReduced = window.matchMedia('(prefers-reduced-motion: reduce)');
-
-    function resize() {
-      const dpr = Math.max(1, window.devicePixelRatio || 1);
-      canvas.width = Math.floor(window.innerWidth * dpr);
-      canvas.height = Math.floor(window.innerHeight * dpr);
-      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-
-      fontSize = baseFont;
-      columns = Math.floor(window.innerWidth / fontSize);
-      drops = Array.from({ length: columns }, () => Math.random() * window.innerHeight);
-      ctx.font = fontSize + 'px monospace';
-    }
-
-    function draw() {
-      if (!running) return;
-      ctx.fillStyle = 'rgba(0,0,0,0.05)';
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-      ctx.fillStyle = '#00ff00';
-
-      for (let i = 0; i < drops.length; i++) {
-        const text = letters.charAt(Math.floor(Math.random() * letters.length));
-        ctx.fillText(text, i * fontSize, drops[i]);
-        drops[i] += Math.random() * 20 + 5;
-        if (drops[i] > window.innerHeight) drops[i] = 0;
-      }
-      requestAnimationFrame(draw);
-    }
-
-    function updateMotionPreference() {
-      running = !mediaReduced.matches && !document.hidden;
-      if (running) requestAnimationFrame(draw);
-      else ctx.clearRect(0, 0, canvas.width, canvas.height);
-    }
-
-    resize();
-    window.addEventListener('resize', resize, { passive: true });
-
-    if (mediaReduced.addEventListener) mediaReduced.addEventListener('change', updateMotionPreference);
-    else mediaReduced.addListener(updateMotionPreference);
-    document.addEventListener('visibilitychange', updateMotionPreference);
-    updateMotionPreference();
-  </script>
-</body>
-</html>
+    <!-- Serviços -->
+    <section id="servicos" class="grid" aria-labelledby="tit-servicos">
