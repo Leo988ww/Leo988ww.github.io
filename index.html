@@ -14,7 +14,7 @@
     body {
       font-family: 'Roboto', sans-serif;
       color: #f1f1f1;
-      background: #0b0b0b; /* fundo visível mesmo sem canvas */
+      background: #0b0b0b;
       overflow-x: hidden;
       position: relative;
     }
@@ -124,7 +124,6 @@
       ul { flex-direction: column; gap: 15px; }
     }
 
-    /* Respeita pessoas com sensibilidade a movimento */
     @media (prefers-reduced-motion: reduce) {
       .fade-in, .fade-in-delay, .fade-in-delay-2, .fade-in-delay-3 { animation: none !important; opacity: 1; transform: none; }
       img.profile { transition: none; }
@@ -144,7 +143,6 @@
   </header>
 
   <main class="container" role="main">
-    <!-- Link Anhanguera -->
     <section aria-labelledby="sec-curso">
       <h2 id="sec-curso" class="fade-in fade-in-delay-3">🎓 Meu curso</h2>
       <div class="links fade-in fade-in-delay-2">
@@ -168,7 +166,10 @@
     <section aria-labelledby="sec-projetos">
       <h2 id="sec-projetos" class="fade-in fade-in-delay-3">📁 Projetos</h2>
       <ul id="projects" aria-live="polite">
-        <li>💡 Projeto 1 – Em breve</li>
+        <li>
+          💡 Projeto 1 – Organização de Arquivos para a empresa <strong>Alares</strong><br>
+          <small>Desenvolvi um projeto para ajudar os colaboradores a se organizarem e armazenarem arquivos de forma mais eficiente e segura.</small>
+        </li>
         <li>💡 Projeto 2 – Em construção</li>
       </ul>
     </section>
@@ -179,31 +180,26 @@
   </footer>
 
   <script>
-    // Atualiza o ano no rodapé
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Projetos animados
     const items = document.querySelectorAll('#projects li');
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
     }, { threshold: 0.2 });
     items.forEach(item => observer.observe(item));
 
-    // Matrix rain com requestAnimationFrame, DPR e prefers-reduced-motion
     const canvas = document.getElementById('cmd-bg');
     const ctx = canvas.getContext('2d');
     const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%^&*()*&^%';
-    const baseFont = 16; // em CSS pixels
+    const baseFont = 16;
     let fontSize, columns, drops, running = true;
 
     const mediaReduced = window.matchMedia('(prefers-reduced-motion: reduce)');
 
     function resize() {
       const dpr = Math.max(1, window.devicePixelRatio || 1);
-      // Ajusta o canvas para nitidez em telas retina
       canvas.width = Math.floor(window.innerWidth * dpr);
       canvas.height = Math.floor(window.innerHeight * dpr);
-      // Desenha em coordenadas de CSS pixels
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 
       fontSize = baseFont;
@@ -236,7 +232,6 @@
     resize();
     window.addEventListener('resize', resize, { passive: true });
 
-    // Respeita prefers-reduced-motion e pausa quando a aba não está ativa
     if (mediaReduced.addEventListener) mediaReduced.addEventListener('change', updateMotionPreference);
     else mediaReduced.addListener(updateMotionPreference);
     document.addEventListener('visibilitychange', updateMotionPreference);
