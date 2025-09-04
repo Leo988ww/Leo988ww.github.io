@@ -4,28 +4,22 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Portfólio do Leonardo</title>
-  <meta name="description" content="Leonardo Barbosa — Analista de TI. Atendo Alares, ECID e clientes autônomos. Redes Mikrotik, manutenção de PCs, impressoras térmicas e suporte remoto." />
+  <meta name="description" content="Leonardo Barbosa — Analista de TI. Suporte remoto, Windows/Drivers, manutenção e backup." />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <meta property="og:title" content="Portfólio do Leonardo" />
-  <meta property="og:description" content="Analista de TI — Redes Mikrotik, manutenção e suporte." />
+  <meta property="og:description" content="Analista de TI — Suporte remoto, Windows/Drivers e manutenção." />
   <meta property="og:type" content="website" />
   <style>
-    :root{
-      --bg:#0b0b0b; --fg:#f1f1f1; --acc:#00ff9c; --acc2:#00e0ff; --card:rgba(0,0,0,.55);
-    }
+    :root{ --bg:#0b0b0b; --fg:#f1f1f1; --acc:#00ff9c; --acc2:#00e0ff; --card:rgba(0,0,0,.55); }
     *{margin:0;padding:0;box-sizing:border-box}
     html{scroll-behavior:smooth}
     body{font-family:'Roboto',sans-serif;color:var(--fg);background:var(--bg);overflow-x:hidden;position:relative}
 
-    /* Background canvas */
     #cmd-bg{position:fixed;inset:0;width:100%;height:100%;z-index:0}
-
-    /* Top gradient overlay for depth */
     .overlay{position:fixed;inset:0;pointer-events:none;background:radial-gradient(1200px 600px at 20% -10%, rgba(0,255,156,.15), transparent 60%), radial-gradient(1200px 600px at 80% 110%, rgba(0,224,255,.12), transparent 60%);z-index:1}
 
-    /* Layout */
     .container{max-width:1000px;margin:0 auto;position:relative;z-index:2;padding:24px}
     header.site{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:10px 0;position:sticky;top:0;background:linear-gradient(to bottom, rgba(11,11,11,.85), rgba(11,11,11,.35), transparent);backdrop-filter:saturate(140%) blur(6px);z-index:3}
     .brand{display:flex;align-items:center;gap:12px}
@@ -34,7 +28,6 @@
     nav a{color:var(--fg);text-decoration:none;margin-left:14px;font-weight:700;opacity:.9}
     nav a:hover, nav a:focus{color:var(--acc);outline:none}
 
-    /* Hero */
     .hero{display:grid;grid-template-columns:1.1fr .9fr;gap:28px;align-items:center;margin-top:12px}
     @media(max-width:800px){.hero{grid-template-columns:1fr;text-align:center}}
     .hero .photo{display:flex;justify-content:center}
@@ -46,7 +39,6 @@
     .btn{display:inline-flex;align-items:center;gap:10px;padding:12px 18px;border-radius:12px;border:2px solid var(--acc2);text-decoration:none;color:var(--fg);font-weight:700;box-shadow:0 0 6px var(--acc2)}
     .btn:hover{background:var(--acc2);color:#071217}
 
-    /* Cards */
     .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:36px}
     @media(max-width:900px){.grid{grid-template-columns:repeat(2,1fr)}}
     @media(max-width:640px){.grid{grid-template-columns:1fr}}
@@ -54,11 +46,9 @@
     .card h3{color:var(--acc);margin-bottom:10px}
     .card p{opacity:.95;line-height:1.6}
 
-    /* Chips */
     .chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
     .chip{padding:8px 12px;border-radius:999px;border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.06);font-size:.95rem}
 
-    /* Links list */
     .links{display:flex;flex-wrap:wrap;gap:12px;margin-top:14px}
     .links a{color:var(--fg);text-decoration:none;border:1.5px solid rgba(0,224,255,.45);border-radius:10px;padding:10px 14px;display:inline-flex;align-items:center;gap:10px;box-shadow:0 0 6px rgba(0,224,255,.45)}
     .links a:hover{background:rgba(0,224,255,.9);color:#071217}
@@ -72,7 +62,6 @@
   <div class="overlay" aria-hidden="true"></div>
 
   <div class="container">
-    <!-- Topbar -->
     <header class="site" role="banner">
       <div class="brand">
         <img src="https://i.imgur.com/q2aQLwf.jpeg" alt="Foto de perfil do Leonardo" width="48" height="48" loading="lazy" />
@@ -86,25 +75,20 @@
       </nav>
     </header>
 
-    <!-- Hero -->
     <section class="hero" id="sobre">
       <div>
         <h2 class="title">Tecnologia que resolve.</h2>
         <p class="subtitle">
-          Atuo como Analista de T.I na <strong>Alares</strong>, realizo manutenção para a <strong>ECID</strong> e presto serviços como autônomo pela <strong>TechPC Assistência Lc</strong>. 
-          Experiência com redes <strong>Mikrotik</strong> e <strong>VLANs</strong>, configuração de <strong>impressoras térmicas (Zebra)</strong>, suporte remoto, formatação/backup e otimização de máquinas.
+          Atuo como Analista de T.I na <strong>Alares</strong>, realizo manutenção para a <strong>ECID</strong> e presto serviços como autônomo pela <strong>TechPC Assistência Lc</strong>.
+          Foco em <strong>suporte remoto</strong>, <strong>Windows/Drivers</strong>, formatação, backup e otimização de máquinas.
         </p>
         <div class="cta">
           <a class="btn" href="https://wa.me/35999609514" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i>Fale comigo</a>
-          <a class="btn" href="mailto:leonardo@example.com"><i class="fa-solid fa-envelope"></i>Email</a>
+          <a class="btn" href="mailto:leonardoviniciusbarbosa17@gmail.com"><i class="fa-solid fa-envelope"></i>Email</a>
         </div>
         <div class="chips" aria-label="Habilidades principais">
-          <span class="chip">Redes Mikrotik</span>
-          <span class="chip">VLANs / Switches</span>
-          <span class="chip">Impressoras Zebra</span>
           <span class="chip">Windows / Drivers</span>
           <span class="chip">Suporte remoto</span>
-          <span class="chip">OBS / Lives</span>
         </div>
       </div>
       <div class="photo">
@@ -112,5 +96,96 @@
       </div>
     </section>
 
-    <!-- Serviços -->
     <section id="servicos" class="grid" aria-labelledby="tit-servicos">
+      <h2 id="tit-servicos" class="sr-only" style="position:absolute;left:-9999px">Serviços</h2>
+      <article class="card">
+        <h3><i class="fa-solid fa-screwdriver-wrench"></i> Manutenção de computadores</h3>
+        <p>Limpeza, troca de pasta térmica, upgrades (SSD/RAM), diagnóstico de travamentos e otimização.</p>
+      </article>
+      <article class="card">
+        <h3><i class="fa-solid fa-shield-halved"></i> Backup & segurança</h3>
+        <p>Estruturação de pastas, políticas de backup e recuperação de arquivos.</p>
+      </article>
+      <article class="card">
+        <h3><i class="fa-solid fa-desktop"></i> Suporte remoto</h3>
+        <p>Atendimento rápido para incidentes do dia a dia, instalação e atualização de softwares e drivers.</p>
+      </article>
+    </section>
+
+    <section id="experiencia" class="grid" aria-labelledby="tit-exp">
+      <h2 id="tit-exp" class="sr-only" style="position:absolute;left:-9999px">Experiência</h2>
+      <article class="card">
+        <h3>Alares — Analista de T.I</h3>
+        <p>Suporte aos colaboradores, padronização de ambiente, organização de arquivos e melhorias de produtividade.</p>
+      </article>
+      <article class="card">
+        <h3>ECID — Manutenção</h3>
+        <p>Manutenção preventiva e corretiva de estações, formatação, SSD e alinhamento de drivers.</p>
+      </article>
+      <article class="card">
+        <h3>TechPC Assistência Lc — Autônomo</h3>
+        <p>Atendimento a empresas com diagnóstico, manutenção e suporte remoto.</p>
+      </article>
+    </section>
+
+    <section id="contato" aria-labelledby="tit-contatos" style="margin-top:34px">
+      <h2 id="tit-contatos" class="title" style="font-size:1.8rem">📌 Contatos</h2>
+      <div class="links" style="margin-top:10px">
+        <a href="https://github.com/Leo988ww" target="_blank" rel="noopener noreferrer"><i class="fab fa-github" aria-hidden="true"></i> GitHub</a>
+        <a href="https://www.youtube.com/@tvpadrin" target="_blank" rel="noopener noreferrer"><i class="fab fa-youtube" aria-hidden="true"></i> YouTube</a>
+        <a href="https://instagram.com/leov.sb" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram" aria-hidden="true"></i> Instagram</a>
+        <a href="https://www.facebook.com/leonardo.barboza.7965" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook" aria-hidden="true"></i> Facebook</a>
+        <a href="https://wa.me/35999609514" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp" aria-hidden="true"></i> WhatsApp</a>
+        <a href="mailto:leonardo@example.com"><i class="fa-solid fa-envelope" aria-hidden="true"></i> Email</a>
+        <a href="https://www.anhanguera.com/aluno/login" target="_blank" rel="noopener noreferrer"><i class="fas fa-university" aria-hidden="true"></i> Meu Curso</a>
+      </div>
+    </section>
+
+    <footer role="contentinfo">
+      <p>© <span id="year"></span> Leonardo Barbosa • Feito com HTML, CSS e JavaScript</p>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    const canvas = document.getElementById('cmd-bg');
+    const ctx = canvas.getContext('2d');
+    const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%^&*()*&^%';
+    const baseFont = 16; let fontSize, columns, drops, running = true;
+    const mediaReduced = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+    function resize(){
+      const dpr = Math.max(1, window.devicePixelRatio || 1);
+      canvas.width = Math.floor(window.innerWidth * dpr);
+      canvas.height = Math.floor(window.innerHeight * dpr);
+      ctx.setTransform(dpr,0,0,dpr,0,0);
+      fontSize = baseFont; columns = Math.floor(window.innerWidth / fontSize);
+      drops = Array.from({length:columns},()=>Math.random()*window.innerHeight);
+      ctx.font = fontSize + 'px monospace';
+    }
+    function draw(){
+      if(!running) return;
+      ctx.fillStyle = 'rgba(0,0,0,0.05)';
+      ctx.fillRect(0,0,canvas.width,canvas.height);
+      ctx.fillStyle = '#00ff00';
+      for(let i=0;i<drops.length;i++){
+        const t = letters.charAt(Math.floor(Math.random()*letters.length));
+        ctx.fillText(t, i*fontSize, drops[i]);
+        drops[i] += Math.random()*20 + 5;
+        if(drops[i] > window.innerHeight) drops[i] = 0;
+      }
+      requestAnimationFrame(draw);
+    }
+    function updateMotion(){
+      running = !mediaReduced.matches && !document.hidden;
+      if(running) requestAnimationFrame(draw); else ctx.clearRect(0,0,canvas.width,canvas.height);
+    }
+    resize();
+    window.addEventListener('resize', resize, {passive:true});
+    if(mediaReduced.addEventListener) mediaReduced.addEventListener('change', updateMotion); else mediaReduced.addListener(updateMotion);
+    document.addEventListener('visibilitychange', updateMotion);
+    updateMotion();
+  </script>
+</body>
+</html>
