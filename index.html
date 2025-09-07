@@ -12,7 +12,13 @@
   <meta property="og:description" content="Analista de TI — Manutenção de computadores e suporte remoto." />
   <meta property="og:type" content="website" />
   <style>
-    :root{ --bg:#0b0b0b; --fg:#f1f1f1; --acc:#00ff9c; --acc2:#00e0ff; --card:rgba(0,0,0,.55); }
+    :root{ 
+      --bg:#0b0b0b; 
+      --fg:#f1f1f1; 
+      --acc:#00ff9c; 
+      --acc2:#00e0ff; 
+      --card:rgba(0,0,0,.55); 
+    }
     *{margin:0;padding:0;box-sizing:border-box}
     html{scroll-behavior:smooth}
     body{font-family:'Roboto',sans-serif;color:var(--fg);background:var(--bg);overflow-x:hidden;position:relative}
@@ -20,13 +26,15 @@
     #cmd-bg{position:fixed;inset:0;width:100%;height:100%;z-index:0}
     .overlay{position:fixed;inset:0;pointer-events:none;background:radial-gradient(1200px 600px at 20% -10%, rgba(0,255,156,.15), transparent 60%), radial-gradient(1200px 600px at 80% 110%, rgba(0,224,255,.12), transparent 60%);z-index:1}
 
-    .container{max-width:1000px;margin:0 auto;position:relative;z-index:2;padding:24px}
-    header.site{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:10px 0;position:sticky;top:0;background:linear-gradient(to bottom, rgba(11,11,11,.85), rgba(11,11,11,.35), transparent);backdrop-filter:saturate(140%) blur(6px);z-index:3}
+    .container{max-width:1100px;margin:0 auto;position:relative;z-index:2;padding:24px}
+    
+    /* Header */
+    header.site{display:flex;justify-content:space-between;align-items:center;padding:12px 0;position:sticky;top:0;background:rgba(11,11,11,.85);backdrop-filter:saturate(140%) blur(6px);z-index:3;border-bottom:1px solid rgba(0,224,255,.25)}
     .brand{display:flex;align-items:center;gap:12px}
-    .brand img{border-radius:50%;width:48px;height:48px;border:2px solid var(--acc2)}
-    .brand h1{font-size:1.25rem;color:var(--acc);text-shadow:0 0 6px rgba(0,255,156,.5)}
-    nav a{color:var(--fg);text-decoration:none;margin-left:14px;font-weight:700;opacity:.9}
-    nav a:hover, nav a:focus{color:var(--acc);outline:none}
+    .brand img{border-radius:50%;width:50px;height:50px;border:2px solid var(--acc2)}
+    .brand h1{font-size:1.35rem;color:var(--acc);text-shadow:0 0 6px rgba(0,255,156,.5)}
+    nav a{color:var(--fg);text-decoration:none;margin-left:20px;font-weight:700;transition:.3s}
+    nav a:hover{color:var(--acc2);transform:scale(1.05)}
 
     /* Destaque especial */
     .highlight-link {
@@ -34,35 +42,40 @@
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       font-weight: 900;
-      text-shadow: 0 0 10px rgba(0,224,255,.6);
+      text-shadow: 0 0 12px rgba(0,224,255,.7);
       animation: glow 2s infinite alternate;
     }
     @keyframes glow {
       from { text-shadow: 0 0 10px rgba(0,224,255,.6); }
-      to { text-shadow: 0 0 20px rgba(0,255,156,.9), 0 0 30px rgba(0,224,255,.8); }
+      to { text-shadow: 0 0 25px rgba(0,255,156,.9), 0 0 40px rgba(0,224,255,.8); }
     }
 
-    .hero{display:grid;grid-template-columns:1.1fr .9fr;gap:28px;align-items:center;margin-top:12px}
+    /* Hero */
+    .hero{display:grid;grid-template-columns:1.1fr .9fr;gap:28px;align-items:center;margin-top:30px}
     @media(max-width:800px){.hero{grid-template-columns:1fr;text-align:center}}
-    .hero .photo{display:flex;justify-content:center}
-    .hero .photo img{border-radius:50%;width:160px;height:160px;border:4px solid var(--acc2);box-shadow:0 0 20px rgba(0,224,255,.45);transition:transform .4s}
-    .hero .photo img:hover{transform:scale(1.05) rotate(2deg)}
-    .title{font-size:2.4rem;color:#00ff00;margin-bottom:10px;text-shadow:0 0 5px #00ff00,0 0 15px var(--acc2)}
-    .subtitle{font-size:1.1rem;line-height:1.6;opacity:.95}
+    .hero .photo img{border-radius:50%;width:180px;height:180px;border:4px solid var(--acc2);box-shadow:0 0 25px rgba(0,224,255,.6);transition:.4s}
+    .hero .photo img:hover{transform:scale(1.08) rotate(2deg)}
+    .title{font-size:2.6rem;color:#00ff00;margin-bottom:12px;text-shadow:0 0 10px #00ff00,0 0 20px var(--acc2)}
+    .subtitle{font-size:1.15rem;line-height:1.7;opacity:.95;margin-bottom:16px}
+    .btn-main{background:linear-gradient(90deg,var(--acc),var(--acc2));color:#000;padding:12px 24px;border-radius:8px;font-weight:700;text-decoration:none;transition:.3s;display:inline-block}
+    .btn-main:hover{opacity:.85;transform:scale(1.05)}
 
-    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:36px}
+    /* Cards */
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:40px}
     @media(max-width:900px){.grid{grid-template-columns:repeat(2,1fr)}}
     @media(max-width:640px){.grid{grid-template-columns:1fr}}
-    .card{background:var(--card);border:1px solid rgba(0,224,255,.25);border-radius:16px;padding:18px;box-shadow:0 8px 24px rgba(0,0,0,.35)}
-    .card h3{color:var(--acc);margin-bottom:10px}
+    .card{background:var(--card);border:1px solid rgba(0,224,255,.25);border-radius:16px;padding:20px;box-shadow:0 8px 24px rgba(0,0,0,.4);transition:.3s}
+    .card:hover{transform:translateY(-6px);box-shadow:0 12px 30px rgba(0,224,255,.3)}
+    .card h3{color:var(--acc);margin-bottom:12px}
     .card p{opacity:.95;line-height:1.6}
 
-    .links{display:flex;flex-wrap:wrap;gap:12px;margin-top:14px}
-    .links a{color:var(--fg);text-decoration:none;border:1.5px solid rgba(0,224,255,.45);border-radius:10px;padding:10px 14px;display:inline-flex;align-items:center;gap:10px;box-shadow:0 0 6px rgba(0,224,255,.45)}
-    .links a:hover{background:rgba(0,224,255,.9);color:#071217}
-    .links a:focus{outline:3px solid #ff0;outline-offset:3px}
+    /* Links de contato */
+    .links{display:flex;flex-wrap:wrap;gap:14px;margin-top:18px}
+    .links a{color:var(--fg);text-decoration:none;border:1.5px solid rgba(0,224,255,.45);border-radius:10px;padding:12px 16px;display:inline-flex;align-items:center;gap:10px;font-weight:600;transition:.3s;box-shadow:0 0 6px rgba(0,224,255,.45)}
+    .links a:hover{background:linear-gradient(90deg,var(--acc),var(--acc2));color:#000;transform:scale(1.05)}
+    .links i{font-size:1.2rem}
 
-    footer{margin:40px 0 12px;text-align:center;opacity:.9}
+    footer{margin:50px 0 15px;text-align:center;opacity:.8;font-size:.95rem}
   </style>
 </head>
 <body>
@@ -70,32 +83,36 @@
   <div class="overlay" aria-hidden="true"></div>
 
   <div class="container">
+    <!-- Header -->
     <header class="site" role="banner">
       <div class="brand">
-        <img src="https://i.imgur.com/q2aQLwf.jpeg" alt="Foto de perfil do Leonardo" width="48" height="48" loading="lazy" />
+        <img src="https://i.imgur.com/q2aQLwf.jpeg" alt="Foto de perfil do Leonardo" loading="lazy" />
         <h1>Leonardo Barbosa • Analista de TI</h1>
       </div>
       <nav aria-label="Principal">
-        <a href="https://leo988ww.github.io/sites-dicas-t.i/" target="_blank" rel="noopener noreferrer" class="highlight-link">
+        <a href="https://leo988ww.github.io/sites-dicas-t.i/" target="_blank" class="highlight-link">
+          💡 Dicas de Computadores
         </a>
       </nav>
     </header>
 
+    <!-- Hero -->
     <section class="hero" id="sobre">
       <div>
-        <h2 class="title">Tecnologia que resolve.</h2>
+        <h2 class="title">Tecnologia que resolve 🚀</h2>
         <p class="subtitle">
           Atuo como Analista de T.I na <strong>Alares</strong>, realizo manutenção para a <strong>ECID</strong> e presto serviços como autônomo pela <strong>TechPC Assistência Lc</strong>.
           Foco em manutenção e otimização de máquinas.
         </p>
+        <a href="https://wa.me/35999609514" class="btn-main"><i class="fab fa-whatsapp"></i> Fale comigo</a>
       </div>
       <div class="photo">
-        <img src="https://i.imgur.com/q2aQLwf.jpeg" alt="Leonardo Barbosa" width="160" height="160" loading="lazy" />
+        <img src="https://i.imgur.com/q2aQLwf.jpeg" alt="Leonardo Barbosa" loading="lazy" />
       </div>
     </section>
 
-    <section id="servicos" class="grid" aria-labelledby="tit-servicos">
-      <h2 id="tit-servicos" class="sr-only" style="position:absolute;left:-9999px">Serviços</h2>
+    <!-- Serviços -->
+    <section id="servicos" class="grid">
       <article class="card">
         <h3><i class="fa-solid fa-screwdriver-wrench"></i> Manutenção de computadores</h3>
         <p>Limpeza, troca de pasta térmica, upgrades (SSD/RAM), diagnóstico de travamentos e otimização.</p>
@@ -104,10 +121,14 @@
         <h3><i class="fa-solid fa-desktop"></i> Suporte remoto</h3>
         <p>Atendimento rápido para incidentes do dia a dia, instalação e atualização de softwares e drivers.</p>
       </article>
+      <article class="card">
+        <h3><i class="fa-solid fa-shield-halved"></i> Segurança</h3>
+        <p>Configuração de antivírus, backup e proteção de dados para empresas e usuários domésticos.</p>
+      </article>
     </section>
 
-    <section id="experiencia" class="grid" aria-labelledby="tit-exp">
-      <h2 id="tit-exp" class="sr-only" style="position:absolute;left:-9999px">Experiência</h2>
+    <!-- Experiência -->
+    <section id="experiencia" class="grid">
       <article class="card">
         <h3>Alares — Analista de T.I</h3>
         <p>Suporte aos colaboradores, padronização de ambiente, organização de arquivos e melhorias de produtividade.</p>
@@ -122,19 +143,20 @@
       </article>
     </section>
 
-    <section id="contato" aria-labelledby="tit-contatos" style="margin-top:34px">
-      <h2 id="tit-contatos" class="title" style="font-size:1.8rem">📌 Contatos</h2>
-      <div class="links" style="margin-top:10px">
-        <a href="https://github.com/Leo988ww" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> GitHub</a>
-        <a href="https://leo988ww.github.io/sites-dicas-t.i/" target="_blank" rel="noopener noreferrer" class="highlight-link">💡 Dicas de Computadores</a>
-        <a href="https://wa.me/35999609514" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i> WhatsApp</a>
-        <a href="mailto:leonardoviniciusbarbosa17@gmail.com"><i class="fa-solid fa-envelope"></i> leonardoviniciusbarbosa17@gmail.com</a>
-        <a href="https://www.anhanguera.com/aluno/login" target="_blank" rel="noopener noreferrer"><i class="fas fa-university"></i> Meu Curso</a>
-        <a href="https://instagram.com/techpcassistencialc01" target="_blank" rel="noopener noreferrer">🚫 Não clica aqui</a>
+    <!-- Contatos -->
+    <section id="contato" style="margin-top:40px">
+      <h2 class="title" style="font-size:1.8rem">📌 Contatos</h2>
+      <div class="links">
+        <a href="https://github.com/Leo988ww" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+        <a href="https://leo988ww.github.io/sites-dicas-t.i/" target="_blank" class="highlight-link"><i class="fas fa-lightbulb"></i> Dicas de Computadores</a>
+        <a href="https://wa.me/35999609514" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+        <a href="mailto:leonardoviniciusbarbosa17@gmail.com"><i class="fa-solid fa-envelope"></i> E-mail</a>
+        <a href="https://www.anhanguera.com/aluno/login" target="_blank"><i class="fas fa-university"></i> Meu Curso</a>
+        <a href="https://instagram.com/techpcassistencialc01" target="_blank"><i class="fas fa-ban"></i> 🚫 Não clica aqui</a>
       </div>
     </section>
 
-    <footer role="contentinfo">
+    <footer>
       <p>© <span id="year"></span> Leonardo Barbosa • Feito com HTML, CSS e JavaScript</p>
     </footer>
   </div>
@@ -182,5 +204,3 @@
   </script>
 </body>
 </html>
-
-
