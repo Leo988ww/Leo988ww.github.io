@@ -4,12 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Portfólio do Leonardo</title>
-  <meta name="description" content="Leonardo Barbosa — Analista de TI. Manutenção de computadores e suporte remoto." />
+  <meta name="description" content="Leonardo Barbosa — Analista de Suporte TI Jr. Manutenção de computadores e suporte remoto." />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <meta property="og:title" content="Portfólio do Leonardo" />
-  <meta property="og:description" content="Analista de TI — Manutenção de computadores e suporte remoto." />
+  <meta property="og:description" content="Analista de Suporte TI Jr — Manutenção de computadores e suporte remoto." />
   <meta property="og:type" content="website" />
   <style>
     :root{ 
@@ -36,7 +36,7 @@
     nav a{color:var(--fg);text-decoration:none;margin-left:20px;font-weight:700;transition:.3s}
     nav a:hover{color:var(--acc2);transform:scale(1.05)}
 
-    /* Destaque especial */
+    /* Destaque */
     .highlight-link {
       background: linear-gradient(90deg, #00ff9c, #00e0ff);
       -webkit-background-clip: text;
@@ -70,7 +70,7 @@
     .card h3{color:var(--acc);margin-bottom:12px}
     .card p{opacity:.95;line-height:1.6}
 
-    /* Links de contato */
+    /* Links */
     .links{display:flex;flex-wrap:wrap;gap:14px;margin-top:18px}
     .links a{color:var(--fg);text-decoration:none;border:1.5px solid rgba(0,224,255,.45);border-radius:10px;padding:12px 16px;display:inline-flex;align-items:center;gap:10px;font-weight:600;transition:.3s;box-shadow:0 0 6px rgba(0,224,255,.45)}
     .links a:hover{background:linear-gradient(90deg,var(--acc),var(--acc2));color:#000;transform:scale(1.05)}
@@ -88,7 +88,7 @@
     <header class="site" role="banner">
       <div class="brand">
         <img src="https://i.imgur.com/q2aQLwf.jpeg" alt="Foto de perfil do Leonardo" loading="lazy" />
-        <h1>Leonardo Barbosa • Analista de TI</h1>
+        <h1>Leonardo Barbosa • Analista de Suporte TI Jr</h1>
       </div>
       <nav aria-label="Principal">
         <a href="https://leo988ww.github.io/sites-dicas-t.i/" target="_blank" class="highlight-link">
@@ -101,10 +101,11 @@
       <div>
         <h2 class="title">Tecnologia que resolve 🚀</h2>
         <p class="subtitle">
-          Atuo como Analista de T.I na <strong>Alares</strong>, realizo manutenção para a <strong>ECID</strong> e presto serviços como autônomo pela <strong>TechPC Assistência Lc</strong>.
+          Atuo como Analista de Suporte TI Jr na <strong>Alares</strong>, realizo manutenção para a <strong>ECID</strong> e presto serviços como autônomo pela <strong>TechPCassistenciaL</strong>.  
           Foco em manutenção e otimização de máquinas.
         </p>
-        <!-- Contato: WhatsApp no lugar do e-mail -->
+
+        <!-- Contato -->
         <a href="https://wa.me/35999609514" class="hero-contact" target="_blank" rel="noopener">
         </a>
       </div>
@@ -132,7 +133,7 @@
     <!-- Experiência -->
     <section id="experiencia" class="grid">
       <article class="card">
-        <h3>Alares — Analista de T.I</h3>
+        <h3>Alares — Analista de Suporte TI Jr</h3>
         <p>Suporte aos colaboradores, padronização de ambiente, organização de arquivos e melhorias de produtividade.</p>
       </article>
       <article class="card">
@@ -140,21 +141,20 @@
         <p>Manutenção preventiva e corretiva de estações, formatação, SSD e alinhamento de drivers.</p>
       </article>
       <article class="card">
-        <h3>TechPC Assistência Lc — Autônomo</h3>
+        <h3>TechPCassistenciaL — Autônomo</h3>
         <p>Atendimento a empresas com diagnóstico, manutenção e suporte remoto.</p>
       </article>
     </section>
 
-    <!-- Contatos (embaixo) -->
+    <!-- Contatos -->
     <section id="contato" style="margin-top:40px">
       <h2 class="title" style="font-size:1.8rem">📌 Contatos</h2>
       <div class="links">
         <a href="https://github.com/Leo988ww" target="_blank" rel="noopener"><i class="fab fa-github"></i> GitHub</a>
         <a href="https://wa.me/35999609514" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> WhatsApp</a>
         <a href="https://www.anhanguera.com/aluno/login" target="_blank" rel="noopener"><i class="fas fa-university"></i> Meu Curso</a>
-        <!-- Embaixo: Dicas de Computadores e Não clica aqui -->
         <a href="https://leo988ww.github.io/sites-dicas-t.i/" target="_blank" rel="noopener" class="highlight-link">
-          <i class="fas fa-lightbulb" aria-hidden="true"></i> Dicas de Computadores
+          <i class="fas fa-lightbulb"></i> Dicas de Computadores
         </a>
         <a href="https://instagram.com/techpcassistencialc01" target="_blank" rel="noopener">Não clica aqui</a>
       </div>
@@ -167,7 +167,6 @@
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
-
     const canvas = document.getElementById('cmd-bg');
     const ctx = canvas.getContext('2d');
     const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%^&*()*&^%';
@@ -202,11 +201,10 @@
     }
     resize();
     window.addEventListener('resize', resize, {passive:true});
-    if(mediaReduced.addEventListener) mediaReduced.addEventListener('change', updateMotion); else mediaReduced.addListener(updateMotion);
+    if(mediaReduced.addEventListener) mediaReduced.addEventListener('change', updateMotion); 
+    else mediaReduced.addListener(updateMotion);
     document.addEventListener('visibilitychange', updateMotion);
     updateMotion();
   </script>
 </body>
 </html>
-
-
